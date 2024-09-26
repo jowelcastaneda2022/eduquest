@@ -1,0 +1,8 @@
+export { default as MathGame } from './MathGame'
+export { default as SmallLoader } from './SmallLoader'
+export { default as PageLoader } from './PageLoader'
+export { default as PageHeader } from './PageHeader'
+export { default as AnimatedBg } from './AnimatedBg'
+export { default as LogoIcon } from './LogoIcon'
+export { default as GameLink } from './GameLink'
+export { default as WordScrambleGame } from './WordScrambleGame'

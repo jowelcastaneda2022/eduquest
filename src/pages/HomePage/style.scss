@@ -1,0 +1,70 @@
+.home-page {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px 20px;
+    color: #000;
+    text-align: center;
+
+    h1 {
+      margin-bottom: 40px;
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 20px;
+      max-width: 667px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .logo-icon{
+      display: block;
+      width: 20%;
+      max-width: 300px;
+    }
+
+    .logo{
+      max-width: 700px;
+      margin: 50px auto;
+
+      @media screen and (max-width: 767px) {
+        margin: 30px auto;
+      }
+    }
+
+    nav {
+      margin-top: 50px;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(180deg);
+    opacity: 0.1
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 1
+  }
+}

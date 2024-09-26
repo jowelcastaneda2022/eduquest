@@ -1,0 +1,209 @@
+@import '../../style/index.scss';
+
+.math-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .questions,
+  .answers {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    align-items: center;
+  }
+
+  .question{
+    margin: 10px;
+    padding: 1px;
+    background: linear-gradient(-45deg, #145af2 0%, #34cccd 100% );
+    border-radius: 10px;
+    position: relative;
+    z-index: 0;
+    box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.1);
+    .q-wrapper{
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 22px;
+      background: #fff;
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background: linear-gradient(-45deg, #5C8DF6 0%, #34cccd 100% );
+        z-index: -1;
+        pointer-events: none;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      &:hover::before {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  .answer {
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 22px;
+    min-width: 70px;
+    text-align: center;
+    padding: 20px 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: #fbfcfd;
+    border: 1px solid #447cf5;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2), -2px -1px 10px rgba(255,255,255,0.7);;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: all 0.5s;
+    -webkit-user-select: none;
+    user-select: none;
+    color: black;
+
+    &:hover {
+      border: 1px solid #145af2;
+      transform: scale(1.05);
+    }
+  }
+
+  .question-text{
+    font-size: 22px;
+    letter-spacing: 1px;;
+  }
+
+  .answer-slot {
+    margin-top: 15px;
+  }
+  .drop-slot {
+    height: 55px;
+    border: 1px dashed #34cccd;
+    padding: 15px;
+    background-color: #fbfcfd;
+    min-width: 85px;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include no-text-highlight;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    span{
+      color: #31b1b1;
+      font-size: 16px;
+      max-width: 80px;
+      line-height: 1.3;
+    }
+  }
+
+
+
+  .has-answer{
+    .drop-slot {
+      border: 1px dashed #447cf5;
+      background: #fff;
+      min-width: 90px;
+      height: 60px;
+    }
+  }
+
+  .pushable-btn {
+    position: relative;
+    background: transparent;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 20px;
+
+    &:disabled{
+      opacity: 0.5;
+      pointer-events: none;
+      filter: grayscale(100%);
+    }
+
+    &:hover {
+      filter: brightness(110%);
+
+      .front {
+        transform: translateY(-6px);
+        transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+      }
+
+      .shadow {
+        transform: translateY(4px);
+        transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+      }
+    }
+
+    &:active {
+      .front {
+        transform: translateY(-2px);
+        transition: transform 34ms;
+      }
+
+      .shadow {
+        transform: translateY(1px);
+        transition: transform 34ms;
+      }
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+
+
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: hsl(226, 25%, 69%);
+      border-radius: 8px;
+      filter: blur(2px);
+      will-change: transform;
+      transform: translateY(2px);
+      transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    }
+
+    .edge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 8px;
+      background: linear-gradient(to right,
+      #145AF2 0%,   
+      #2b6af3 8%,   
+      #2b6af3 92%,  
+      #145AF2 100%);
+    }
+
+    .front {
+      display: block;
+      position: relative;
+      border-radius: 8px;
+      background: #5C8DF6;
+      padding: 15px 30px;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: .9rem;
+      transform: translateY(-4px);
+      transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+      @include no-text-highlight
+    }
+  }
+}
