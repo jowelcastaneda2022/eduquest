@@ -1,0 +1,50 @@
+@keyframes bubbleFadeUp {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 100%); 
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  .result {
+    animation: bubbleFadeUp 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: absolute;
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+  
+  .incorrect {
+    background-color: rgba(255, 100, 100, 0.9);
+  }
+  
+  .next-button,
+  .clear-button {
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .next-button:hover,
+  .clear-button:hover {
+    background-color: #45a049;
+  }
+  

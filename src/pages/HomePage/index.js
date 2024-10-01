@@ -22,6 +22,9 @@ function HomePage() {
             <li>
               <GameLink text="Play Word Scramble Challenge" path="/word-scramble-game"/>
             </li>
+            <li>
+              <GameLink text="Guess It Spell It Game" path="/guess-it-spell-it"/>
+            </li>
           </ul>
         </nav>
       </div>
