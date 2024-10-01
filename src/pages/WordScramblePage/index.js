@@ -1,26 +1,39 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PageLoader, WordScrambleGame, PageHeader } from '../../components';
 import { fetchWordScrambleData } from '../../mutations';
-import { StoreContext } from '../../store';
-import { finishWordScrambleGame, retryWordScrambleGame } from '../../store/actions';
 import { ResultPage } from '../../pages';
 import './style.scss';
+import { store, updateStore } from '../../unistore'
+import { connect } from 'unistore/react';
 
-function WordScramblePage() {
-  const { state, dispatch } = useContext(StoreContext);
-  const { gameData, gameFinished, finalScore } = state.wordScramble;
+function WordScramblePage(props) {
+  const { gameData, gameFinished, finalScore } = props.wordScramble;
 
   useEffect(() => {
-    fetchWordScrambleData(dispatch);
-  }, [dispatch]);
+    fetchWordScrambleData();
+  }, []);
 
   const handleFinish = (score) => {
-    finishWordScrambleGame(dispatch, score);
+    const { wordScramble } = store.getState();
+    updateStore({
+      wordScramble: {
+        ...wordScramble,
+        finalScore: score,
+        gameFinished: true,
+      }
+    })
   };
 
   const handleRetry = () => {
-    retryWordScrambleGame(dispatch);
-    fetchWordScrambleData(dispatch);
+    const { wordScramble } = store.getState();
+    updateStore({
+      wordScramble: {
+        ...wordScramble,
+        finalScore: 0,
+        gameFinished: false,
+      }
+    })
+    fetchWordScrambleData();
   };
 
   if (gameData.fetching) {
@@ -55,4 +68,4 @@ function WordScramblePage() {
   );
 }
 
-export default WordScramblePage;
+export default (connect('wordScramble'))(WordScramblePage);

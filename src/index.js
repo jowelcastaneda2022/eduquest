@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './style/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { StoreProvider } from './store';
+import { Provider } from 'unistore/react';
+import { store } from './unistore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StoreProvider>
+    <Provider store={store}>
       <App />
-    </StoreProvider>
+    </Provider>
   </React.StrictMode>
 );
 

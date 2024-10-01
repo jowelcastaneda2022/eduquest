@@ -1,4 +1,5 @@
-import { startFetchWordScrambleData, setFetchWordScrambleData, failFetchWordScrambleData } from '../store/actions';
+
+import { store, updateStore } from '../unistore'
 import { shuffleArray } from '../helpers'
 import teacher from '../assets/images/teacher.gif';
 import books from '../assets/images/books.gif';
@@ -6,8 +7,19 @@ import pencils from '../assets/images/pencils.gif';
 import school from '../assets/images/school.gif';
 import apple from '../assets/images/apple.gif';
 
-export function fetchWordScrambleData(dispatch) {
-  startFetchWordScrambleData(dispatch);
+export function fetchWordScrambleData() {
+  const { wordScramble } = store.getState();
+  const { gameData } = wordScramble
+  updateStore({
+    wordScramble: {
+      ...wordScramble,
+      gameData: {
+        ...gameData,
+        fetching: true,
+        result: false,
+      }
+    }
+  })
 
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -18,12 +30,31 @@ export function fetchWordScrambleData(dispatch) {
         { scrambled: 'LOOSCH', correct: 'SCHOOL', image: school },
         { scrambled: 'LPAEP', correct: 'APPLE', image: apple }
       ]);
-      setFetchWordScrambleData(dispatch, roundsData);
+
+      updateStore({
+        wordScramble: {
+          ...wordScramble,
+          gameData: {
+            data: roundsData,
+            fetching: false,
+            result: true,
+          }
+        }
+      })
       resolve(true);
     }, 2000);
   }).catch(() => {
     setTimeout(() => {
-      failFetchWordScrambleData(dispatch);
+      updateStore({
+        wordScramble: {
+          ...wordScramble,
+          gameData: {
+            data: null,
+            fetching: false,
+            result: false,
+          }
+        }
+      })
     }, 1000);
     return false;
   });

@@ -1,29 +1,40 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PageLoader, MathGame, PageHeader } from '../../components';
 import { fetchMathData } from '../../mutations';
-import { StoreContext } from '../../store';
-import { finishMathGame, retryMathGame } from '../../store/actions';
 import { ResultPage } from '../../pages'
 import './style.scss'
+import { store, updateStore } from '../../unistore'
+import { connect } from 'unistore/react';
 
-function MathPage() {
-  const { state, dispatch } = useContext(StoreContext);
-  const { gameData, gameFinished, finalScore } = state.math;
+function MathPage({ math }) {
+  const { gameData, gameFinished, finalScore } = math;
 
   useEffect(() => {
-    fetchMathData(dispatch);
-  }, [dispatch]);
+    fetchMathData();
+  }, []);
 
   const handleFinish = (score) => {
-    finishMathGame(dispatch, score);
+    const { math } = store.getState();
+    updateStore({
+      math: {
+        ...math,
+        finalScore: score,
+        gameFinished: true,
+      }
+    })
   };
 
   const handleRetry = () => {
-    retryMathGame(dispatch);
-    fetchMathData(dispatch);
+    const { math } = store.getState();
+    updateStore({
+      math: {
+        ...math,
+        finalScore: 0,
+        gameFinished: false,
+      }
+    })
+    fetchMathData();
   };
-  console.error('gameData', state)
-  console.error('MathPage gameData', JSON.stringify(gameData, null, 2));
 
   if (gameData.fetching) {
     return <PageLoader />;
@@ -59,4 +70,4 @@ function MathPage() {
   );
 }
 
-export default MathPage;
+export default connect('math')(MathPage);

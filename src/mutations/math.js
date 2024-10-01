@@ -1,9 +1,20 @@
-import { startFetchMathData, setFetchMathData, failFetchMathData } from '../store/actions';
+import { store, updateStore } from '../unistore'
 import { shuffleArray } from '../helpers'
 
 
-export function fetchMathData(dispatch) {
-  startFetchMathData(dispatch);
+export function fetchMathData() {
+  const { math } = store.getState();
+  const { gameData } = math
+  updateStore({
+    math: {
+      ...math,
+      gameData: {
+        ...gameData,
+        fetching: true,
+        result: false,
+      }
+    }
+  })
 
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -37,12 +48,32 @@ export function fetchMathData(dispatch) {
         }
       ]);
 
-      setFetchMathData(dispatch, roundsData);
+      console.error('roundsData', roundsData)
+
+      updateStore({
+        math: {
+          ...math,
+          gameData: {
+            data: roundsData,
+            fetching: false,
+            result: true,
+          }
+        }
+      })
       resolve(true);
     }, 2000);
   }).catch(() => {
     setTimeout(() => {
-      failFetchMathData(dispatch);
+      updateStore({
+        math: {
+          ...math,
+          gameData: {
+            data: null,
+            fetching: false,
+            result: false,
+          }
+        }
+      })
     }, 1000);
     return false;
   });
