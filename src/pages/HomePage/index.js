@@ -1,33 +1,19 @@
 import React from 'react';
 import { AnimatedBg, GameLink, LogoIcon } from '../../components';
-// import logo from '../../assets/icons/logo.svg'
-import logo from '../../assets/images/title.png'
+import homeBgLogo from '../../assets/images/home-bg.png'
 import './style.scss'
 
 function HomePage() {
   return (
     <div className="home-page">
-      <AnimatedBg />
+      <img className="home-bg" src={homeBgLogo} alt="EDUQUEST" />
       <div className="content">
         {/* <LogoIcon /> */}
-        {/* <img className="logo" src={logo} alt="EDUQUEST" /> */}
-        <img className="logo" src={logo} alt="CRESCENDO" />
-        <h1>Ready to start your quest?</h1>
-        <p>Dive into a world of fun and learning! Our educational games are designed to spark curiosity, boost creativity, and make learning an exciting adventure. Whether you're solving puzzles, exploring new concepts, or challenging your skills, there's something here for every young mind.</p>
-        <nav>
-          <ul>
-            <li>
-              <GameLink text="Play Number Crunching Game" path="/number-crunching-game"/>
-            </li>
-            <li>
-              <GameLink text="Play Word Scramble Challenge" path="/word-scramble-game"/>
-            </li>
-            <li>
-              <GameLink text="Guess It Spell It Game" path="/guess-it-spell-it"/>
-            </li>
-          </ul>
-        </nav>
+        <h1>The <span class="large">Lost Keys</span> <span class="small">of</span> Inventa Island</h1>
+        <p>An Interactive educational quest that will test your Math, Reading, Science and History!</p>
+        <p>Age 8-12 years</p>
       </div>
+      <button class="start-game">Start Game</button>
     </div>
   );
 }
