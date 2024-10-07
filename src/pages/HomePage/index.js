@@ -6,7 +6,7 @@ import './style.scss'
 function HomePage() {
   return (
     <div className="home-page">
-      <img className="home-bg" src={homeBgLogo} alt="EDUQUEST" />
+      <img className="home-bg" src={homeBgLogo} alt="Map" />
       <div className="content">
         <h1>
           <span>The</span>
