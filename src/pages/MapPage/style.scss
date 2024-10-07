@@ -1,0 +1,13 @@
+.map-page {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 40px 20px 20px;
+    color: #000;
+    text-align: center;
+  }
+}
