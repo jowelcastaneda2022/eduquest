@@ -29,3 +29,5 @@ Thumbs.db
 # Miscellaneous
 *.tgz
 *.zip
+*.pack
+.eslintcache
