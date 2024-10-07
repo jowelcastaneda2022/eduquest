@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
-import { ResultBubble } from '../../components';
+import { ResultBubble, GameNav, GameModal } from '../../components';
 import apple from '../../assets/images/guess-spell-object/apple.png';
 import orange from '../../assets/images/guess-spell-object/orange.png';
 import avocado from '../../assets/images/guess-spell-object/avocado.png';
@@ -43,6 +43,7 @@ function GuessItSpellIt() {
   const [randomLetters, setRandomLetters] = useState([]);
   const [clickedButtons, setClickedButtons] = useState([]);
   const [points, setPoints] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     if (currentObject) {
@@ -56,6 +57,10 @@ function GuessItSpellIt() {
       setSelectedLetters(Array(currentObject.name.length).fill(null)); 
     }
   }, [currentObject]);
+
+  const showModal = () => {
+    setOpenModal(!openModal)
+  }
 
   const handleLetterClick = (letter, index) => {
     const firstEmptyIndex = selectedLetters.indexOf(null);
@@ -134,7 +139,6 @@ function GuessItSpellIt() {
           d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"
         />
     </svg>
-
       <h1 className="title">Guess the object and spell it correctly</h1>
 
       <div className="game-wrapper">
@@ -177,6 +181,11 @@ function GuessItSpellIt() {
             isCorrect={false} 
           />
         )}
+        {openModal && (
+          <GameModal description={"In Guess It, Spell It, your goal is to identify the object shown in the picture. Below the image, there’s a blank square representing the hidden name of the object. Beneath that, you'll find a set of scrambled letters. Your task is to choose the correct letters from the scrambled ones to spell out the object’s name and complete the challenge. Have fun guessing and spelling!"} onButtonClick={showModal}/>
+        )}
+
+        <GameNav onButtonClick={showModal}/>
     </div>
   );
 }
