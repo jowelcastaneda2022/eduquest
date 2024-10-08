@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PageLoader, MathGame, PageHeader, GameNav, GameModal } from '../../components';
+import { PageLoader, MathGame, GameNav, GameModal } from '../../components';
 import { fetchMathData } from '../../mutations';
 import { ResultPage } from '../../pages'
 import './style.scss'
@@ -66,7 +66,6 @@ function MathPage({ math }) {
 
   return (
     <div className="math-page">
-      <PageHeader text="Number Crunching Game" />
       {!gameFinished ? (
         <MathGame roundsData={gameData.data} onFinish={handleFinish} />
       ) : (
@@ -92,12 +91,12 @@ function MathPage({ math }) {
           />
         )
       )}
-
+{/* 
       <ul className="circles">
         {Array.from({ length: 10 }).map((_, index) => (
           <li key={index}></li>
         ))}
-      </ul>
+      </ul> */}
 
 
       {openInstructionModal && (
