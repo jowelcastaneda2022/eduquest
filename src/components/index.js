@@ -7,3 +7,7 @@ export { default as LogoIcon } from './LogoIcon'
 export { default as GameLink } from './GameLink'
 export { default as WordScrambleGame } from './WordScrambleGame'
 export { default as ResultBubble } from './GuessItSpellIt/ResultBubble'
+export { default as GameNav } from './GameNav'
+export { default as GameModal } from './GameModal'
+// export { default as StarsResult } from './StarsResult'
+export { IconStarHalf, IconStarFill } from './Stars';
