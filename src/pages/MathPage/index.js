@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PageLoader, MathGame, PageHeader, GameNav, GameModal } from '../../components';
+import { PageLoader, MathGame, GameNav, GameModal } from '../../components';
 import { fetchMathData } from '../../mutations';
 import { ResultPage } from '../../pages'
 import './style.scss'
@@ -9,14 +9,26 @@ import { connect } from 'unistore/react';
 function MathPage({ math }) {
   const { gameData, gameFinished, finalScore } = math;
   const [openModal, setOpenModal] = useState(false);
+  const [openInstructionModal, setOpenInstructionModal] = useState(false);
+  const [openResultModal, setOpenResultModal] = useState(false);
 
   useEffect(() => {
     fetchMathData();
   }, []);
 
   const showModal = () => {
-    setOpenModal(!openModal)
+    openModal ? setOpenModal(false) : setOpenModal(true)
   }
+
+  // Function to toggle the instruction modal
+  const toggleInstructionModal = () => {
+    setOpenInstructionModal(!openInstructionModal);
+  };
+
+  // Function to toggle the result modal
+  const toggleResultModal = () => {
+    setOpenResultModal(!openResultModal);
+  };
 
   const handleFinish = (score) => {
     const { math } = store.getState();
@@ -27,6 +39,7 @@ function MathPage({ math }) {
         gameFinished: true,
       }
     })
+    toggleResultModal();
   };
 
   const handleRetry = () => {
@@ -38,6 +51,7 @@ function MathPage({ math }) {
         gameFinished: false,
       }
     })
+    toggleResultModal();
     fetchMathData();
   };
 
@@ -52,7 +66,6 @@ function MathPage({ math }) {
 
   return (
     <div className="math-page">
-      <PageHeader text="Number Crunching Game" />
       {!gameFinished ? (
         <MathGame roundsData={gameData.data} onFinish={handleFinish} />
       ) : (
@@ -63,33 +76,39 @@ function MathPage({ math }) {
         //   onRetry={handleRetry}
         //   scoringMode="perQuestion"
         // />
-        <GameModal description={"You made it past the first level."} 
-        onButtonClick={showModal}
-        type={"advance"}
-        title={"Math Mountain"}
-        header={"Congratulations"}
-        buttonText={"Back to map"}
-      />
-
+       
+        openResultModal && (
+          <GameModal 
+            onButtonClick={toggleResultModal}
+            type={"advance"}
+            title={"Math Mountain"}
+            buttonText={"Back to map"}
+            score={finalScore}
+            totalQuestions={gameData.data.reduce((total, round) => total + round.questions.length, 0)}
+            totalRounds={gameData.data.length}
+            scoringMode="perQuestion"
+            onRetry={handleRetry}
+          />
+        )
       )}
-
+{/* 
       <ul className="circles">
         {Array.from({ length: 10 }).map((_, index) => (
           <li key={index}></li>
         ))}
-      </ul>
+      </ul> */}
 
 
-      {openModal && (
+      {openInstructionModal && (
         <GameModal description={"Drag and drop the correct answer into the highlighted area. Beat the timer and make your way through the different levels."} 
-          onButtonClick={showModal}
+          onButtonClick={toggleInstructionModal} 
           type={"regular"}
           title={"Math Mountain"}
           header={""}
         />
       )}
 
-      <GameNav onButtonClick={showModal}/>
+      <GameNav onButtonClick={toggleInstructionModal}/>
     </div>
   );
 }

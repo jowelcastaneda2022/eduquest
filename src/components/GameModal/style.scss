@@ -35,7 +35,7 @@
         background: var(--secondary-blue);
         margin-bottom: 80px;
         position: relative;
-        
+
         p {
             font-size: 42px;
             padding: 0;
@@ -68,18 +68,30 @@
     p {
       font-size: 28px;
       line-height: 1.4em;
+      color: #fff;
     }
   
-    .btn-wrapper {
+    .btn-wrapper,  .btn-wrapper > div{
       margin-top: 40px;
-  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      gap: 20px;
+      padding-top: 20px;
+
       a {
         display: block;
         width: fit-content;
-        margin: auto;
         background: var(--accent-blue);
         padding: 20px 80px;
         font-size: 30px;
+        cursor: pointer;
+      }
+      .btn-style-tryAgain {
+        background: var(--accent-yellow);
+        color: #000;
+        border: 2px solid #000;
       }
     }
   }
