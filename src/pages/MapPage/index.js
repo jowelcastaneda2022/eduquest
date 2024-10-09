@@ -6,21 +6,32 @@ import key from '../../assets/images/key.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
+import { getItem } from '../../helpers';
 import { connect } from 'unistore/react';
 import './style.scss';
 
 function MapPage(props) {
   const [openModal, setOpenModal] = useState(false);
+
+  const getScorePercentage = (name) => {
+    return props[name].scorePercentage 
+    ? props[name].scorePercentage 
+    : getItem(name) 
+      ? getItem(name).scorePercentage 
+      : props[name].scorePercentage 
+  }
+
+
   const challenges = [
     {
       text: "Math Mountain",
       path: "/math-mountain",
-      rate: props.math.scorePercentage
+      rate: getScorePercentage('math')
     },
     {
       text: "Scramble Savannah",
       path: "/scramble-savannah",
-      rate: props.wordScramble.scorePercentage
+      rate: getScorePercentage('wordScramble')
     },
     {
       text: "Spellbound Sands",

@@ -6,3 +6,24 @@ export const shuffleArray = (array) => {
   }
   return newArray;
 };
+
+export function getItem (key, cb) {
+  let data = null;
+  try {
+    data = window.localStorage.getItem(key);
+    data = JSON.parse(data);
+  } catch (err) {
+    cb && cb(data);
+    return data;
+  } finally {
+    cb && cb(data);
+    return data;
+  }
+}
+
+export function setItem (key, value) {
+  window.localStorage.setItem(
+    key,
+    typeof value !== 'string' ? JSON.stringify(value) : value || null
+  );
+}

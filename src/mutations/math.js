@@ -61,7 +61,7 @@ export function fetchMathData() {
         }
       })
       resolve(true);
-    }, 2000);
+    }, 1000);
   }).catch(() => {
     setTimeout(() => {
       updateStore({
@@ -74,7 +74,7 @@ export function fetchMathData() {
           }
         }
       })
-    }, 1000);
+    }, 500);
     return false;
   });
 }
