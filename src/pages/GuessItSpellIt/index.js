@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { shuffleArray } from '../../helpers'
 import './style.scss';
 import { ResultBubble, GameNav, GameModal } from '../../components';
 import apple from '../../assets/images/guess-spell-object/apple.png';
@@ -27,14 +28,6 @@ const objects = [
 
 function getRandomObject() {
   return objects[Math.floor(Math.random() * objects.length)];
-}
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
 
 function GuessItSpellIt() {

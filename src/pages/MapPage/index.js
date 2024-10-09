@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'unistore/react';
 import { GameNav, GameModal } from '../../components';
+import { getItem } from '../../helpers';
 import homeBgLogo from '../../assets/images/home-bg.png';
 import key from '../../assets/images/key.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-import { getItem } from '../../helpers';
-import { connect } from 'unistore/react';
 import './style.scss';
 
 function MapPage(props) {
@@ -20,7 +20,6 @@ function MapPage(props) {
       ? getItem(name).scorePercentage 
       : props[name].scorePercentage 
   }
-
 
   const challenges = [
     {
@@ -67,7 +66,7 @@ function MapPage(props) {
                     }
                   </div>
                   <div className="stars">
-                    <FontAwesomeIcon icon={challenge.rate > 0 ? solidStar : regularStar} size="xl" />
+                    <FontAwesomeIcon icon={challenge.rate > 1 ? solidStar : regularStar} size="xl" />
                     <FontAwesomeIcon icon={challenge.rate > 30 ? solidStar : regularStar} size="xl" />
                     <FontAwesomeIcon icon={challenge.rate > 90 ? solidStar : regularStar} size="xl" />
                   </div>
@@ -79,10 +78,10 @@ function MapPage(props) {
       </div>
 
       {openModal && (
-        <GameModal description={""}
+        <GameModal 
+          description=""
           onButtonClick={showModal}
           type="howTo"
-
         />
       )}
 

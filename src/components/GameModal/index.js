@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { StarsResult } from '../../components'
 import owl from '../../assets/images/owl-welcome.png'
 import './style.scss'
-import { default as StarsResult } from '../StarsResult'
 
-function GameModal({ description, link , onButtonClick, buttonText, type, title, header, score, totalQuestions, totalRounds, scoringMode, onRetry, gameNumber, getScorePercentage }) {
+function GameModal({ 
+  description, 
+  link , 
+  onButtonClick, 
+  buttonText, 
+  type, 
+  title, 
+  header, 
+  score, 
+  totalQuestions, 
+  totalRounds, 
+  scoringMode, 
+  onRetry, 
+  gameNumber, 
+  getScorePercentage 
+}) {
   const navigate = useNavigate();
 
   const denominator = scoringMode === 'perQuestion' ? totalQuestions : totalRounds;
-  const percentage = Math.round((score / denominator) * 100);
+  const percentage = Math.max(1, Math.round((score / denominator) * 100));
+
+  useEffect(() => {
+    if(percentage){
+      getScorePercentage(percentage)
+    }
+  }, []);
 
   let resultMessage;
   let resultTitle;
   
   const handleHomeClick = () => {
-    getScorePercentage(percentage)
     navigate('/game-map');
   };
 
