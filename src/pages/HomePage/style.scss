@@ -6,20 +6,17 @@
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: var(--primary-blue);
+  background: url('../../assets/images/Inventa-Island.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 80px;
 
-  .home-bg {
-    position: absolute;
-    left: 50%;
-    top: 75%;
-    transform: translate(-50%, -75%);
-    z-index: 0;
-    width: 70%;
-    height: 580px;
+  .home-title {
+    width: 40%;
   }
 
   .content {
@@ -29,57 +26,21 @@
     color: #000;
     text-align: center;
 
-    h1 {
-      font-size: 65px;
-      font-weight: 400;
-      background: url('../../assets/images/title-bg.png');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: fit-content;
-      color: #000;
-      padding: 50px 23px;
-      margin: 0 auto;
-      line-height: 1em;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-
-      .text-large {
-        font-size: 86px;
-        font-weight: 400;
-        margin-top: 10px;
-      }
-
-      .text-small {
-        font-size: 45px;
-      }
-
-      span {
-        display: block;
-        line-height: 1em;
-      }
-    }
-
     p {
       margin-bottom: 20px;
       max-width: 667px;
       margin: 0 auto;
-      line-height: 1.5;
-      font-size: 23px;
-      color: #fff;
+      line-height: 1.2em;
+      font-size: 26px;
+      color: var(--primary-brown);
     }
 
     .btn-wrapper {
       margin-top: 60px;
 
       a {
-        font-size: 30px;
-        color: #212121;
         background: var(--accent-yellow);
         z-index: 1;
-        padding: 20px 70px;
-        text-decoration: none;
-        border: 2px solid #000;
       }
     }
   }

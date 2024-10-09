@@ -2,21 +2,20 @@
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-
-  background-color: var(--primary-blue);
+  background: url('../../assets/images/Island-Map.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 
-  .home-bg {
+  .welcome-title {
     position: absolute;
-    left: 50%;
-    top: 75%;
-    transform: translate(-50%, -75%);
     z-index: 0;
-    width: 70%;
-    height: 580px;
+    width: 200px;
+    bottom: 4%;
+    right: 4%;
   }
 
   .content {
@@ -25,11 +24,14 @@
     padding: 40px 20px 20px;
     color: #000;
     text-align: center;
-
+    width: 80%;
+    height: 80vh;
+    
     h1 {
       font-size: 50px;
       font-weight: normal;
-      color: #fff;
+      color: var(--accent-yellow);
+      margin-bottom: 70px;
     }
   }
 
@@ -40,7 +42,7 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: left;
-
+    height: 100%;
     li{
       width: 50%;
       text-align: left;
@@ -59,7 +61,7 @@
 
     &:hover{
       .name{
-        box-shadow: 0 0 30px var(--accent-blue);
+        box-shadow: 0 0 30px var(--accent-yellow);
 
         &::before{
           display: inline-block;
@@ -87,12 +89,11 @@
   }
 
   .name {
-    font-size: 30px;
-    color: #fff;
+    font-size: 32px;
+    color: var(--accent-lightbrown);
     display: inline-block;
-    background-color: var(--secondary-blue);
-    padding: 25px 40px;
-    border: 1px solid #000;
+    background-color: var(--primary-brown);
+    padding: 35px;
     border-radius: 20px;;
     position: relative;
     bottom: -14px;
@@ -103,7 +104,7 @@
       content: '';
       width: calc(100% + 2px);
       height: calc(100% + 2px);
-      border: 5px solid var(--accent-blue);
+      border: 5px solid var(--accent-yellow);
       border-radius: 25px;
       position: absolute;
       top: -6px;
@@ -117,18 +118,19 @@
     justify-content: center;
 
     .circle {
-      border: 1px solid #000;
       border-radius: 9999px;
       padding: 4px;
       position: relative;
       z-index: 2;
-      background-color: var(--secondary-blue);
+      background-color: var(--primary-brown);
+      width: 40px;
+      height: 40px;
 
       &::before{
         content: '';
         width: calc(100% + 2px);
         height: calc(100% + 2px);
-        border: 5px solid var(--accent-blue);
+        border: 5px solid var(--accent-yellow);
         border-radius: 9999px;
         position: absolute;
         top: -6px;
@@ -142,7 +144,7 @@
         content: '';
         width: 17px;
         height: 15px;
-        background-color: var(--secondary-blue);
+        background-color: var(--primary-brown);
         position: absolute;
         top: -2px;
         left: -10px;
@@ -154,7 +156,6 @@
         align-items: center;
         justify-content: center;
         background-color: var(--accent-yellow);
-        border: 1px solid #000;
         border-radius: 9999px;
         min-width: 40px;
         min-height: 40px;
@@ -162,21 +163,20 @@
     }
 
     .stars {
-      border: 1px solid #000;
       border-radius: 9999px;
       padding: 7px 10px;
       border-left: 0;
       padding-left: 45px;
       margin-left: -40px;
       position: relative;
-      background-color: var(--secondary-blue);
+      background-color: var(--primary-brown);
       z-index: 1;
 
       &::before{
         content: '';
         width: calc(100% + 2px);
         height: calc(100% + 2px);
-        border: 5px solid var(--accent-blue);
+        border: 5px solid var(--accent-yellow);
         border-radius: 9999px;
         position: absolute;
         top: -6px;
@@ -189,13 +189,18 @@
         content: '';
         width: 17px;
         height: 15px;
-        background-color: var(--secondary-blue);
+        background-color: var(--primary-brown);
         position: absolute;
         top: -8px;
         right: -10px;
         display: none;
       }
 
+      .solidStar { 
+        path {
+          fill: var(--accent-yellow)!important;
+        }
+      }
 
       svg {
         display: inline-block;

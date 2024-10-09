@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import owl from '../../assets/images/owl-welcome.png'
+import owl from '../../assets/images/owl-inventa-island.png'
 import './style.scss'
 import { default as StarsResult } from '../StarsResult'
 

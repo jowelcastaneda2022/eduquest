@@ -15,7 +15,7 @@ function App() {
           <Route path="/scramble-savannah" element={<WordScramblePage />} />
           <Route path="/spellbound-sands" element={<GuessItSpellIt />} />
           <Route path="/how-to-play" element={<HowToPage />} />
-          <Route path="/memory-game" element={<MemoryGame />} />
+          <Route path="/flipstone-falls" element={<MemoryGame />} />
         </Routes>
       </div>
     </Router>

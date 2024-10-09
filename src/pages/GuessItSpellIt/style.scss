@@ -40,8 +40,7 @@
 /* animation-end */
 
 .game-container {
-  z-index: 1;
-    font-family: 'Quicksand', sans-serif;
+    z-index: 1;
     display: flex;
     align-items: center;
     text-align: center;
@@ -146,7 +145,6 @@
   }
   
   .letter-button {
-    font-family: 'Quicksand', sans-serif;
     margin: 5px;
     padding: 10px 15px;
     border: 2px solid#9abaff;
