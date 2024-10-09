@@ -6,15 +6,19 @@
     left: 50px;
     z-index: 2;
 }
-.game-nav-links a{
-    display: inline;
-    text-decoration: none;
-    padding: 10px 0px;
-    background: #fff;
-    border: 2px solid #000;
-    font-size: 18px;
-    cursor: pointer;
-    color: #000;
-    text-align: center;
-    min-width: 100px;
+
+.game-nav-links {
+    a,
+    button {
+        display: inline;
+        text-decoration: none;
+        padding: 10px 0px;
+        background: #fff;
+        border: 2px solid #000;
+        font-size: 18px;
+        cursor: pointer;
+        color: #000;
+        text-align: center;
+        min-width: 100px;
+    }
 }
