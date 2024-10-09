@@ -26,7 +26,6 @@
       font-size: 22px;
       background: #fff;
       position: relative;
-      border: 2px solid #000;
 
       &:before {
         content: '';
@@ -50,7 +49,7 @@
 
   .answer {
     margin: 10px;
-    border: 2px solid black;
+    border: 2px solid transparent;
     background: var(--accent-blue);
     border-radius: 20px;
     font-size: 32px;
@@ -64,7 +63,6 @@
     align-items: center;
     cursor: pointer;
     box-sizing: border-box;
-    cursor: pointer;
     transition: all 0.5s;
     -webkit-user-select: none;
     user-select: none;
@@ -74,11 +72,17 @@
       border: 1px solid #145af2;
       transform: scale(1.05);
     }
+
+    &.hidden{
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   .question-text{
     font-size: 28px;
-    letter-spacing: 1px;;
+    letter-spacing: 1px;
+    @include no-text-highlight;
   }
 
   .answer-slot {
@@ -86,7 +90,7 @@
   }
   .drop-slot {
     height: 55px;
-    border: 1px dashed #34cccd;
+    border: 2px dashed #34cccd;
     padding: 15px;
     background: var(--accent-blue);
     min-width: 85px;
@@ -111,11 +115,9 @@
     background-color: #fbfcfd;
   }
 
-
-
   .has-answer{
     .drop-slot {
-      border: 1px dashed #447cf5;
+      border-color: #447cf5;
       min-width: 90px;
       height: 60px;
       font-size: 26px;
@@ -132,6 +134,7 @@
     transition: filter 250ms;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin: 20px;
+    @include no-text-highlight;
 
     &:disabled{
       opacity: 0.5;
@@ -182,7 +185,6 @@
       transform: translateY(-4px);
       transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
       @include no-text-highlight;
-      border: 2px solid #000;
     }
   }
 }
