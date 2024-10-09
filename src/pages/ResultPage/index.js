@@ -37,7 +37,7 @@ const ResultPage = ({ score, totalQuestions, totalRounds, onRetry, scoringMode }
 
     const handleHomeClick = () => {
         onRetry();
-        navigate('/');
+        navigate('/game-map');
     };
 
     return (

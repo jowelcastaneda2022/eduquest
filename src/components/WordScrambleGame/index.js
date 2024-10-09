@@ -68,11 +68,11 @@ const WordScrambleGame = ({ wordsData, onFinish }) => {
         {isCorrect ? <p>Correct!</p> : <p>Keep trying...</p>}
       </div> */}
       <div className="image-container">
-        <div class="circle circle-one"></div>
-        <div class="img-content">
+        <div className="circle circle-one"></div>
+        <div className="img-content">
             <img src={wordsData[currentWordIndex].image} alt="word" />
         </div>
-        <div class="circle circle-two"></div>
+        <div className="circle circle-two"></div>
       </div>
       <button
         className="pushable-btn"
