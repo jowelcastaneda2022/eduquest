@@ -29,12 +29,10 @@ function MathPage({ math }) {
     })
   }
 
-  // Function to toggle the instruction modal
   const toggleInstructionModal = () => {
     setOpenInstructionModal(!openInstructionModal);
   };
 
-  // Function to toggle the result modal
   const toggleResultModal = () => {
     setOpenResultModal(!openResultModal);
   };
@@ -81,8 +79,6 @@ function MathPage({ math }) {
   if (!gameData.data) {
     return <div>Failed to load data. Please try again later.</div>;
   }
-
-  console.error('math', math)
 
   return (
     <div className="math-page">

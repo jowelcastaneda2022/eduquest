@@ -1,3 +1,5 @@
+import { store } from '../unistore'
+
 export const shuffleArray = (array) => {
   let newArray = array.slice();
   for (let i = newArray.length - 1; i > 0; i--) {
@@ -26,4 +28,10 @@ export function setItem (key, value) {
     key,
     typeof value !== 'string' ? JSON.stringify(value) : value || null
   );
+}
+
+export function componentModal (data) {
+  store.setState({
+    componentModal: data
+  })
 }

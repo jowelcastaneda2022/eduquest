@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { GameNav, GameModal } from '../../components';
-import { getItem } from '../../helpers';
+import { getItem, componentModal } from '../../helpers';
 import homeBgLogo from '../../assets/images/home-bg.png';
 import key from '../../assets/images/key.png';
+import keyIcon from '../../assets/images/key-icon.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
@@ -14,11 +15,11 @@ function MapPage(props) {
   const [openModal, setOpenModal] = useState(false);
 
   const getScorePercentage = (name) => {
-    return props[name].scorePercentage 
-    ? props[name].scorePercentage 
-    : getItem(name) 
-      ? getItem(name).scorePercentage 
-      : props[name].scorePercentage 
+    return props[name].scorePercentage
+      ? props[name].scorePercentage
+      : getItem(name)
+        ? getItem(name).scorePercentage
+        : props[name].scorePercentage
   }
 
   const challenges = [
@@ -44,6 +45,34 @@ function MapPage(props) {
 
   const showModal = () => {
     setOpenModal(!openModal)
+  }
+
+  useEffect(() => {
+    const allRatesAbove30 = challenges.every((challenge) => challenge.rate > 30);
+    console.error(allRatesAbove30)
+    if(allRatesAbove30){
+      showAllKeysModal()
+    }
+  }, []);
+
+  const showAllKeysModal = () => {
+    componentModal({
+      content: (
+        <div className="key-modal">
+          <div className="header">
+            <img src={keyIcon} alt="key" />
+            <img src={keyIcon} alt="key" />
+            <img src={keyIcon} alt="key" />
+            <img src={keyIcon} alt="key" />
+          </div>
+          <div className="body">
+            <h1>You did it!</h1>
+            <p>You've found all four keys</p>
+            <button onClick={() => componentModal(null)}>Back to home</button>
+          </div>
+        </div>
+      )
+    })
   }
 
   return (
@@ -78,7 +107,7 @@ function MapPage(props) {
       </div>
 
       {openModal && (
-        <GameModal 
+        <GameModal
           description=""
           onButtonClick={showModal}
           type="howTo"

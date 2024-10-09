@@ -1,4 +1,5 @@
 export const initialStore = {
+  componentModal: null,
   math: {
     gameFinished: false,
     finalScore: 0,
