@@ -2,6 +2,7 @@ export const initialStore = {
   math: {
     gameFinished: false,
     finalScore: 0,
+    scorePercentage: 0,
     gameData: {
       data: null,
       fetching: false,
@@ -11,6 +12,7 @@ export const initialStore = {
   wordScramble: {
     gameFinished: false,
     finalScore: 0,
+    scorePercentage: 0,
     gameData: {
       data: null,
       fetching: false,

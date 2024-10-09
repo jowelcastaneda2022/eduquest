@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { PageLoader, MathGame, GameNav, GameModal } from '../../components';
-import { ResultPage } from '../../pages';
 import { fetchMathData } from '../../mutations';
 import './style.scss'
 import { store, updateStore } from '../../unistore'
@@ -51,11 +50,21 @@ function MathPage({ math }) {
         ...math,
         finalScore: 0,
         gameFinished: false,
+        scorePercentage: 0,
       }
     })
     toggleResultModal();
     fetchMathData();
   };
+
+  const getScorePercentage = (percent) => {
+    updateStore({
+      math: {
+        ...math,
+        scorePercentage: percent,
+      }
+    })
+  }
 
   if (gameData.fetching) {
     return <PageLoader />;
@@ -81,6 +90,7 @@ function MathPage({ math }) {
               scoringMode="perQuestion"
               gameNumber= "1"
               onRetry={handleRetry}
+              getScorePercentage={getScorePercentage}
             />
           : null
       }

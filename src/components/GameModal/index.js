@@ -4,7 +4,7 @@ import owl from '../../assets/images/owl-welcome.png'
 import './style.scss'
 import { default as StarsResult } from '../StarsResult'
 
-function GameModal({ description, link , onButtonClick, buttonText, type, title, header, score, totalQuestions, totalRounds, scoringMode, onRetry, gameNumber }) {
+function GameModal({ description, link , onButtonClick, buttonText, type, title, header, score, totalQuestions, totalRounds, scoringMode, onRetry, gameNumber, getScorePercentage }) {
   const navigate = useNavigate();
 
   const denominator = scoringMode === 'perQuestion' ? totalQuestions : totalRounds;
@@ -14,6 +14,7 @@ function GameModal({ description, link , onButtonClick, buttonText, type, title,
   let resultTitle;
   
   const handleHomeClick = () => {
+    getScorePercentage(percentage)
     navigate('/game-map');
   };
 
