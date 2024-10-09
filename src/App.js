@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { HomePage, WelcomePage, MapPage, MathPage, WordScramblePage, GuessItSpellIt, HowToPage} from './pages';
+import { HomePage, WelcomePage, MapPage, MathPage, WordScramblePage, GuessItSpellIt, HowToPage, MemoryGame } from './pages';
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path="/scramble-savannah" element={<WordScramblePage />} />
           <Route path="/spellbound-sands" element={<GuessItSpellIt />} />
           <Route path="/how-to-play" element={<HowToPage />} />
+          <Route path="/memory-game" element={<MemoryGame />} />
         </Routes>
       </div>
     </Router>
