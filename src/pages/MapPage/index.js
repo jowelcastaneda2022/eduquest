@@ -35,11 +35,13 @@ function MapPage(props) {
     },
     {
       text: "Spellbound Sands",
-      path: "/spellbound-sands"
+      path: "/spellbound-sands",
+      rate: 0
     },
     {
       text: "Flipstone Falls",
-      path: "/flipstone-falls"
+      path: "/flipstone-falls",
+      rate: 0
     }
   ];
 
