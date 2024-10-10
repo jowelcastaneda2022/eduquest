@@ -1,63 +1,28 @@
 /* GuessItSpellIt.css */
-/* animation-start */
-.game-container svg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  max-height: 100vh;
-  z-index: 0;
-  opacity: .15;
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.out-top {
-  animation: rotate 20s linear infinite;
-  transform-origin: 13px 25px;
-}
-
-.in-top {
-  animation: rotate 10s linear infinite;
-  transform-origin: 13px 25px;
-}
-
-.out-bottom {
-  animation: rotate 25s linear infinite;
-  transform-origin: 84px 93px;
-}
-
-.in-bottom {
-  animation: rotate 15s linear infinite;
-  transform-origin: 84px 93px;
-}
-/* animation-end */
-
 .game-container {
     z-index: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 40px;
     text-align: center;
     flex-direction: column;
     margin: 0 auto;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to top, #92b5ff, #fff);
+    background: url('../../assets/images/inventa-game-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #2F3645;
     max-height: 100vh;
     position: relative;
-    min-height: 900px;
+    overflow: hidden;
   }
+
   .game-wrapper {
     z-index: 1;
     padding: 40px 80px;
-    background: #cbdcff;
     border-radius: 100px;
     text-align: center;
     display: flex;
@@ -76,13 +41,17 @@
 
   }
   .result-wrapper {
-      padding: 20px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      width: fit-content;
-      background: #7792cc;
-      color: white;
-      z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent-lightbrown);
+    font-size: 1.5rem;
+    background-color: var(--primary-brown);
+    border: 3px solid var(--primary-yellow);
+    width: 10rem;
+    height: 4rem;
+    font-weight: 600;
+    border-radius: 5px;
   }
 
   .points {
@@ -111,29 +80,19 @@
     display: flex;
     justify-content: center;
   }
-  /*start  */
-  /* .letter-button {
-    position: relative;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  
-  .letter-button.animating {
-    position: absolute;
-    z-index: 10;
-  } */
-  
-/* End */
 
   .letter {
-    font-size: 45px;
+    font-size: 55px;
     margin: 0 10px;
-    border: 2px solid #9abaff;
+    border: 2px solid var(--accent-lightblue);
     border-radius: 10px;
-    width: 50px;
-    height: 60px;
-    display: block;
+    width: 60px;
+    height: 70px;
     cursor: pointer;
     background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .letter-buttons {
@@ -147,25 +106,27 @@
   .letter-button {
     margin: 5px;
     padding: 10px 15px;
-    border: 2px solid#9abaff;
+    border: 2px solid var(--accent-lightblue);
     border-radius: 10px;
-    background-color: #7792cc;
+    background-color: var(--accent-lightblue);
     cursor: pointer;
-    font-size: 52px;
-    width: 60px;
-    height: 70px;
+    font-size: 62px;
+    width: 80px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff
+    color: var(--primary-brown);
+    font-family: inherit;
   }
   
   .letter-button:hover {
-    background-color: #9abaff;
+    // background-color: var(--accent-lightbrown);
+    opacity: .9;
   }
 
   .letter-button[disabled] {
-    background-color: #9abaff;
+    background-color: var(--accent-lightblue);
     opacity: .5;
     color:#f1f1f1;
   }

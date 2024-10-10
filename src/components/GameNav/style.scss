@@ -2,27 +2,40 @@
     display: flex;
     gap: 10px;
     position: absolute;
-    bottom: 50px;
-    left: 50px;
+    bottom: 4%;
+    left: 4%;
     z-index: 2;
 }
 
 .game-nav-links {
-    a,
-    button {
-        display: inline;
+    a {
+        display: block;
         text-decoration: none;
         padding: 10px 0px;
-        background: #fff;
-        border: 2px solid #000;
         font-size: 18px;
         cursor: pointer;
         color: #000;
         text-align: center;
-        min-width: 100px;
+        width: 50px;
+        height: 50px;
     }
 
     .back-link {
-        background: url('../../assets/images/Inventa-Island.png');
+        background: url('../../assets/images/inventa-back.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .help-link {
+        background: url('../../assets/images/inventa-help.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .home-link {
+        background: url('../../assets/images/inventa-home.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }

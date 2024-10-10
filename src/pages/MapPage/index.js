@@ -66,9 +66,9 @@ function MapPage(props) {
             <img src={key} alt="key" />
           </div>
           <div className="body">
-            <h1>You did it!</h1>
+            <h2>You did it!</h2>
             <p>You've found all four keys</p>
-            <button onClick={() => componentModal(null)}>Back to home</button>
+            <button className="btn-style" onClick={() => componentModal(null)}>Back to home</button>
           </div>
         </div>
       )

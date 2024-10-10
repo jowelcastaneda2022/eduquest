@@ -1,12 +1,11 @@
 .word-scramble-page {
   padding: 40px 20px 20px;
   background: #fff;  
-  background: url('../../assets/images/Inventa-Island.png');
-  background-size: cover;
   height: calc(100vh - 60px);
   overflow: hidden;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: url('../../assets/images/inventa-game-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

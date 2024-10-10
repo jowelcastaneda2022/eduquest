@@ -2,7 +2,7 @@
     min-height: 100vh;
     overflow: hidden;
     position: absolute;
-    background-color: rgba(1, 82, 141, .8);
+    background-color: rgba(116, 81, 45, .5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,7 +68,7 @@
       }
     }
   
-    h1 {
+    h2 {
       font-size: 72px;
       font-weight: 400;
       color: var(--accent-yellow);

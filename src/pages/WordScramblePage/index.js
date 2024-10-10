@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'unistore/react';
 import { PageLoader, WordScrambleGame, GameNav, GameModal } from '../../components';
 import { fetchWordScrambleData } from '../../mutations';

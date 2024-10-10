@@ -1,27 +1,29 @@
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(1px);
+  min-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  background-color: rgba(1, 82, 141, .8);
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
-  z-index: 20;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: 0;
+  left: 0;
 
   .modal-content {
-    background: transparent;
-    padding: 20px;
-    border-radius: 5px;
     position: relative;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; 
+    z-index: 1;
+    padding: 30px 40px 50px;
+    color: #fff;
+    text-align: center;
+    background: var(--primary-brown);
+    width: 50%;
+    max-width: 750px;
+    border-radius: 30px;
+    height: auto !important;
   }
 
   .modal-close-btn {
@@ -29,7 +31,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background-color: transparent;
+    background: var(--accent-lightbrown);
     border: none;
   
     &:before,
