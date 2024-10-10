@@ -8,7 +8,7 @@
 
   .scrambled-word {
     display: flex;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(var(--primary-brown-rgb), 0.8);
     padding: 20px 30px;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -24,8 +24,8 @@
     font-size: 24px;
     box-sizing: border-box;
     background: #fbfcfd;
-    border: 1px solid #9abaff;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1), -1px -1px 10px #ffffff;
+    border: 2px solid transparent;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1), -1px -1px 10px var(--primary-brown);
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     cursor: pointer;
@@ -36,11 +36,12 @@
     color: black;
 
     &:hover {
-      border: 1px solid #447cf5;
+      border-color: var(--primary-yellow);
       transform: scale(1.05);
     }
     
     &:active {
+      border-color: var(--primary-yellow);
       transform: scale(0.95) rotateZ(1.7deg);
     }
   }
@@ -88,7 +89,7 @@
       top: 3%;
       left: 3%;
       z-index: -1;
-      background: #447cf5;
+      background: var(--primary-yellow);
       transform: translate(-45%, -45%);
     }
   
@@ -97,7 +98,7 @@
       right: 0;
       z-index: -1;
       transform: translate(45%, 45%);
-      background: #5C8DF6;
+      background: var(--primary-brown);
     }
   }
 
@@ -154,7 +155,7 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background: hsl(226, 25%, 69%);
+      background: hsl(46, 100%, 81%);
       border-radius: 8px;
       filter: blur(2px);
       will-change: transform;
@@ -170,17 +171,18 @@
       width: 100%;
       border-radius: 8px;
       background: linear-gradient(to right,
-      #145AF2 0%,   
-      #2b6af3 8%,   
-      #2b6af3 92%,  
-      #145AF2 100%);
+      #1f0c00 0%,  
+      #2e1a00 25%, 
+      #2e1a00 75%, 
+      #1f0c00 100% 
+      );
     }
 
     .front {
       display: block;
       position: relative;
       border-radius: 8px;
-      background: #5C8DF6;
+      background: var(--primary-brown);
       padding: 15px 30px;
       color: white;
       font-weight: 600;
