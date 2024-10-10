@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { PageLoader, WordScrambleGame, PageHeader } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { PageLoader, WordScrambleGame, PageHeader, GameNav, GameModal } from '../../components';
 import { fetchWordScrambleData } from '../../mutations';
 import { ResultPage } from '../../pages';
 import './style.scss';
@@ -8,6 +8,7 @@ import { connect } from 'unistore/react';
 
 function WordScramblePage(props) {
   const { gameData, gameFinished, finalScore } = props.wordScramble;
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     fetchWordScrambleData();
@@ -23,6 +24,10 @@ function WordScramblePage(props) {
       }
     })
   };
+
+  const showModal = () => {
+    setOpenModal(!openModal)
+  }
 
   const handleRetry = () => {
     const { wordScramble } = store.getState();
@@ -59,11 +64,20 @@ function WordScramblePage(props) {
         />
       )}
 
-      <ul className="circles">
+      {/* <ul className="circles">
         {Array.from({ length: 10 }).map((_, index) => (
           <li key={index}></li>
         ))}
-      </ul>
+      </ul> */}
+
+      {openModal && (
+        <GameModal description={"Look at the object shown, then unscramble the letters below to spell the name of the object!"} 
+        onButtonClick={showModal}
+        type="howTo"
+        />
+      )}
+
+      <GameNav onButtonClick={showModal}/>
     </div>
   );
 }

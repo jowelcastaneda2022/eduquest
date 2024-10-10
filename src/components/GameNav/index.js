@@ -22,17 +22,16 @@ const GameNav = ({ path, onButtonClick }) => {
   return (
     <div className='game-nav-links'>
       <Link className="home-link" to={path ? path : '/game-map'}>
-        <span className="text">Home</span>
       </Link>
-      <button
+      <a
         className="back-link"
         onClick={handleBack}
         disabled={isOnGameMap}s
       >
-      </button>
-      <button className="help-link" onClick={onButtonClick}>
-        <span className="text">Help</span>
-      </button>
+      </a>
+      <a className="help-link" onClick={onButtonClick}>
+
+      </a>
     </div>
   );
 };

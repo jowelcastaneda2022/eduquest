@@ -63,7 +63,7 @@ function GameModal({
                 </div>) 
               : (<p>Choose Modal Type Please.</p>)
           }
-        <h1>{header ? header : resultTitle ? resultTitle : 'How to play'}</h1>
+        <h2>{header ? header : resultTitle ? resultTitle : 'How to play'}</h2>
         <p>{resultMessage ? resultMessage : description ? description : "Try picking any games. Each games have description on how to play. Try it and have fun!"}</p>
         <div className="btn-wrapper">
             {type === 'howTo' 

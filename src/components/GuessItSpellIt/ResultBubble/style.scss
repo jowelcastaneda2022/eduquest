@@ -24,10 +24,14 @@
     bottom: 20px; 
     left: 50%; 
     transform: translateX(-50%); 
+    color: var(--primary-brown);
   }
   
   .incorrect {
     background-color: rgba(255, 100, 100, 0.9);
+    h2 {
+      color: #f1f1f1;
+    }
   }
   
   .next-button,
@@ -41,6 +45,7 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: inherit;
   }
   
   .next-button:hover,

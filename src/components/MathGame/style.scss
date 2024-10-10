@@ -35,7 +35,7 @@
         width: 100%;
         height: 100%;
         border-radius: 20px;
-        background: linear-gradient(-45deg, #5C8DF6 0%, #34cccd 100% );
+        background: linear-gradient(-45deg, var(--accent-lightblue) 0%, #f1f1f1 100% );
         z-index: -1;
         pointer-events: none;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -50,7 +50,7 @@
   .answer {
     margin: 10px;
     border: 2px solid transparent;
-    background: var(--accent-blue);
+    background: var(--accent-lightblue);
     border-radius: 20px;
     font-size: 32px;
     min-width: 70px;
@@ -66,7 +66,7 @@
     transition: all 0.5s;
     -webkit-user-select: none;
     user-select: none;
-    color: black;
+    color: var(--primary-brown);
 
     &:hover {
       border: 1px solid #145af2;
@@ -80,8 +80,9 @@
   }
 
   .question-text{
-    font-size: 28px;
+    font-size: 32px;
     letter-spacing: 1px;
+    color: var(--primary-brown);
     @include no-text-highlight;
   }
 
@@ -92,7 +93,7 @@
     height: 55px;
     border: 2px dashed #34cccd;
     padding: 15px;
-    background: var(--accent-blue);
+    background: var(--accent-lightblue);
     min-width: 85px;
     text-align: center;
     border-radius: 8px;
@@ -100,11 +101,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: var(--primary-brown);
     @include no-text-highlight;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     span{
-      color: #31b1b1;
+      color: var(--accent-lightblue);
       font-size: 16px;
       max-width: 80px;
       line-height: 1.3;
@@ -117,10 +119,10 @@
 
   .has-answer{
     .drop-slot {
-      border-color: #447cf5;
+      // border-color: #447cf5;
       min-width: 90px;
       height: 60px;
-      font-size: 26px;
+      font-size: 32px;
     }
   }
 
@@ -128,13 +130,15 @@
     position: relative;
     background: transparent;
     padding: 0px;
-    border: none;
     cursor: pointer;
     outline-offset: 4px;
     transition: filter 250ms;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin: 20px;
     @include no-text-highlight;
+    font-family: inherit;
+    color: var(--accent-lightbrown);
+    border: none;
 
     &:disabled{
       opacity: 0.5;
@@ -175,16 +179,17 @@
     .front {
       display: block;
       position: relative;
-      border-radius: 0px;
-      background: var(--primary-blue);
+      border-radius: 10px;
+      background: var(--primary-brown);
       padding: 20px 40px;
-      color: white;
       font-weight: 600;
       font-size: .9rem;
-      font-size: 21px;
+      font-size: 32px;
+      font-family: inherit;
       transform: translateY(-4px);
       transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
       @include no-text-highlight;
+      color: var(--accent-lightbrown);
     }
   }
 }
