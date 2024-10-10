@@ -40,12 +40,12 @@ function GameModal({
   };
 
   if (type === 'withRate') {
-    if (percentage > 30) {
+    if (percentage > 90) {
       resultTitle = "Well done";
       resultMessage = "You’ve found the first key!";
     } else {
       resultTitle = "Great effort";
-      resultMessage = "Try again, You can do it!!! Give it another shot and keep going!";
+      resultMessage = "Try again, you can do it! Give it another shot and keep going!";
     }
   }
 
@@ -71,7 +71,7 @@ function GameModal({
               : type === 'withRate' 
                 ? (<div>
                     <button className="btn-style" onClick={handleHomeClick}>{buttonText ? buttonText : 'Close'}</button>
-                    {percentage <= 30 && (
+                    {percentage <= 88 && (
                       <button className="btn-style-tryAgain" onClick={onRetry}>Try Again</button>
                     )}
                   </div>) 

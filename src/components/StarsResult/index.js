@@ -26,7 +26,7 @@ const StarsResult = ({ percentage, gameNumber }) => {
         />
 
         <FontAwesomeIcon
-          icon={percentage > 90 ? solidStar : regularStar}
+          icon={percentage > 89 ? solidStar : regularStar}
           size="xl"
         />
       </div>

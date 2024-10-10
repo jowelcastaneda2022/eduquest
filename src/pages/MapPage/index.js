@@ -4,11 +4,9 @@ import { connect } from 'unistore/react';
 import { GameNav, GameModal } from '../../components';
 import welcomeTitle from '../../assets/images/welcome-title.png';
 import key from '../../assets/images/Inventa-island-key.png';
-// import key from '../../assets/images/key.png';
 import { getItem, componentModal } from '../../helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 import './style.scss';
 
 function MapPage(props) {
@@ -36,12 +34,12 @@ function MapPage(props) {
     {
       text: "Spellbound Sands",
       path: "/spellbound-sands",
-      rate: 0
+      rate: 100
     },
     {
       text: "Flipstone Falls",
       path: "/flipstone-falls",
-      rate: 0
+      rate: 100
     }
   ];
 
@@ -50,9 +48,9 @@ function MapPage(props) {
   }
 
   useEffect(() => {
-    const allRatesAbove30 = challenges.every((challenge) => challenge.rate > 30);
-    console.error(allRatesAbove30)
-    if(allRatesAbove30){
+    const allRatesAbove89 = challenges.every((challenge) => challenge.rate > 89);
+    console.error(allRatesAbove89)
+    if(allRatesAbove89){
       showAllKeysModal()
     }
   }, []);
@@ -91,7 +89,7 @@ function MapPage(props) {
                 </div>
                 <div className="score">
                   <div className="circle">
-                    {challenge.rate > 30
+                    {challenge.rate > 89
                       ? <img className="key" src={key} alt="key" width="100%" height="100%" />
                       : <div className="number">{index + 1}</div>
                     }
@@ -99,7 +97,7 @@ function MapPage(props) {
                   <div className="stars">
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 1 ? 'solidStar' : 'regularStar'} size="xl" />
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 30 ? 'solidStar' : 'regularStar'} size="xl" />
-                    <FontAwesomeIcon icon={solidStar} className={challenge.rate > 90 ? 'solidStar' : 'regularStar'} size="xl" />
+                    <FontAwesomeIcon icon={solidStar} className={challenge.rate > 89 ? 'solidStar' : 'regularStar'} size="xl" />
                   </div>
                 </div>
               </Link>
