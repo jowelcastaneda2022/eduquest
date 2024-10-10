@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StarsResult } from '../../components'
-import owl from '../../assets/images/owl-welcome.png'
-import './style.scss'
+import owl from '../../assets/images/owl-inventa-island.png';
+import { StarsResult } from '../../components';
+// import owl from '../../assets/images/owl-welcome.png';
+import './style.scss';
 
 function GameModal({ 
   description, 
