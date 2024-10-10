@@ -18,13 +18,12 @@ function MathPage({ math }) {
   }, []);
 
   const checkHistory = () => {
-    const { finalScore, scorePercentage } = getItem('math')
     updateStore({
       math: {
         ...math,
-        finalScore: finalScore || 0,
+        finalScore: getItem('math') ? getItem('math').finalScore : 0,
         gameFinished: false,
-        scorePercentage: scorePercentage || 0,
+        scorePercentage: getItem('math') ? getItem('math').scorePercentage : 0,
       }
     })
   }
