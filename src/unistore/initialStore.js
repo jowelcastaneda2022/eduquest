@@ -20,4 +20,14 @@ export const initialStore = {
       result: null,
     },
   },
+  flipstoneGame: {
+    gameFinished: false,
+    finalScore: 0,
+    scorePercentage: 0,
+    gameData: {
+      data: null,
+      fetching: false,
+      result: null,
+    },
+  },
 };

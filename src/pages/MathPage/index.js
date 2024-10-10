@@ -3,8 +3,8 @@ import { connect } from 'unistore/react';
 import { PageLoader, MathGame, GameNav, GameModal } from '../../components';
 import { fetchMathData } from '../../mutations';
 import { getItem } from '../../helpers';
-import { store, updateStore } from '../../unistore'
-import './style.scss'
+import { store, updateStore } from '../../unistore';
+import './style.scss';
 
 function MathPage({ math }) {
   const { gameData, gameFinished, finalScore } = math;
@@ -18,6 +18,7 @@ function MathPage({ math }) {
   }, []);
 
   const checkHistory = () => {
+    const { math } = store.getState();
     updateStore({
       math: {
         ...math,
@@ -58,11 +59,12 @@ function MathPage({ math }) {
         scorePercentage: 0,
       }
     })
-    toggleResultModal();
     fetchMathData();
+    toggleResultModal();
   };
 
   const getScorePercentage = (percent) => {
+    const { math } = store.getState();
     updateStore({
       math: {
         ...math,
@@ -81,35 +83,36 @@ function MathPage({ math }) {
 
   return (
     <div className="math-page">
-      {!gameFinished 
+      {!gameFinished
         ? <MathGame roundsData={gameData.data} onFinish={handleFinish} />
-        : openResultModal 
-          ? <GameModal 
-              onButtonClick={toggleResultModal}
-              type="withRate"
-              title="Math Mountain"
-              buttonText="Back to map"
-              score={finalScore}
-              totalQuestions={gameData.data.reduce((total, round) => total + round.questions.length, 0)}
-              totalRounds={gameData.data.length}
-              scoringMode="perQuestion"
-              gameNumber= "1"
-              onRetry={handleRetry}
-              getScorePercentage={getScorePercentage}
-            />
+        : openResultModal
+          ? <GameModal
+            onButtonClick={toggleResultModal}
+            type="withRate"
+            title="Math Mountain"
+            buttonText="Back to map"
+            score={finalScore}
+            totalQuestions={gameData.data.reduce((total, round) => total + round.questions.length, 0)}
+            totalRounds={gameData.data.length}
+            scoringMode="perQuestion"
+            gameNumber="1"
+            onRetry={handleRetry}
+            getScorePercentage={getScorePercentage}
+          />
           : null
       }
 
       {openInstructionModal && (
-        <GameModal description={"Drag and drop the correct answer into the highlighted area. Beat the timer and make your way through the different levels."} 
-          onButtonClick={toggleInstructionModal} 
+        <GameModal 
+          description="Drag and drop the correct answer into the highlighted area. Beat the timer and make your way through the different levels."
+          onButtonClick={toggleInstructionModal}
           type="howTo"
           title="Math Mountain"
           header=""
         />
       )}
 
-      <GameNav onButtonClick={toggleInstructionModal}/>
+      <GameNav onButtonClick={toggleInstructionModal} />
     </div>
   );
 }

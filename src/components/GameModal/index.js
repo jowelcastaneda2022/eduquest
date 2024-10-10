@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import owl from '../../assets/images/owl-inventa-island.png';
 import { StarsResult } from '../../components';
-// import owl from '../../assets/images/owl-welcome.png';
 import './style.scss';
 
 function GameModal({ 
@@ -40,12 +39,12 @@ function GameModal({
   };
 
   if (type === 'withRate') {
-    if (percentage > 30) {
+    if (percentage > 90) {
       resultTitle = "Well done";
       resultMessage = "You’ve found the first key!";
     } else {
       resultTitle = "Great effort";
-      resultMessage = "Try again, You can do it!!! Give it another shot and keep going!";
+      resultMessage = "Try again, you can do it! Give it another shot and keep going!";
     }
   }
 
@@ -67,15 +66,15 @@ function GameModal({
         <p>{resultMessage ? resultMessage : description ? description : "Try picking any games. Each games have description on how to play. Try it and have fun!"}</p>
         <div className="btn-wrapper">
             {type === 'howTo' 
-              ? (<button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>) 
+              ? <button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>
               : type === 'withRate' 
-                ? (<div>
+                ? <div>
                     <button className="btn-style" onClick={handleHomeClick}>{buttonText ? buttonText : 'Close'}</button>
-                    {percentage <= 30 && (
+                    {percentage <= 88 && (
                       <button className="btn-style-tryAgain" onClick={onRetry}>Try Again</button>
                     )}
-                  </div>) 
-                : (<p>empty</p>)
+                  </div>
+                : <p>empty</p>
             }
         </div>
       </div>

@@ -36,7 +36,8 @@ function GuessItSpellIt() {
   const [randomLetters, setRandomLetters] = useState([]);
   const [clickedButtons, setClickedButtons] = useState([]);
   const [points, setPoints] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
+  const [openInstructionModal, setOpenInstructionModal] = useState(false);
+  const [openResultModal, setOpenResultModal] = useState(false);
 
   useEffect(() => {
     if (currentObject) {
@@ -49,11 +50,17 @@ function GuessItSpellIt() {
       setClickedButtons(new Array(letters.length).fill(false));
       setSelectedLetters(Array(currentObject.name.length).fill(null)); 
     }
+    toggleInstructionModal();
   }, [currentObject]);
 
-  const showModal = () => {
-    setOpenModal(!openModal)
-  }
+
+  const toggleInstructionModal = () => {
+    setOpenInstructionModal(!openInstructionModal);
+  };
+
+  const toggleResultModal = () => {
+    setOpenResultModal(!openResultModal);
+  };
 
   const handleLetterClick = (letter, index) => {
     const firstEmptyIndex = selectedLetters.indexOf(null);
@@ -154,14 +161,18 @@ function GuessItSpellIt() {
           />
         )}
 
-        {openModal && (
-          <GameModal description={"In Guess It, Spell It, your goal is to identify the object shown in the picture. Below the image, there’s a blank square representing the hidden name of the object. Beneath that, you'll find a set of scrambled letters. Your task is to choose the correct letters from the scrambled ones to spell out the object’s name and complete the challenge. Have fun guessing and spelling!"} 
-          onButtonClick={showModal}
-          type="howTo"
+
+        {openInstructionModal && (
+          <GameModal 
+            description="In Guess It, Spell It, your goal is to identify the object shown in the picture. Below the image, there’s a blank square representing the hidden name of the object. Beneath that, you'll find a set of scrambled letters. Your task is to choose the correct letters from the scrambled ones to spell out the object’s name and complete the challenge. Have fun guessing and spelling!"
+            onButtonClick={toggleInstructionModal}
+            type="howTo"
+            title="Spellbound Sands"
+            header=""
           />
         )}
 
-        <GameNav onButtonClick={showModal}/>
+        <GameNav onButtonClick={toggleInstructionModal}/>
     </div>
   );
 }

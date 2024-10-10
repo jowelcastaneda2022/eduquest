@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'unistore/react';
-import { PageLoader, WordScrambleGame, GameNav, GameModal } from '../../components';
-import { fetchWordScrambleData } from '../../mutations';
+import { PageLoader, MemoryGame, GameNav, GameModal } from '../../components';
+import { fetchFlipstoneGameData } from '../../mutations';
 import { getItem } from '../../helpers';
 import { store, updateStore } from '../../unistore';
 import './style.scss';
 
-function WordScramblePage(props) {
-  const { gameData, gameFinished, finalScore } = props.wordScramble;
+function MemoryGamePage({ flipstoneGame }) {
+  const { gameData, gameFinished, finalScore } = flipstoneGame;
   const [openInstructionModal, setOpenInstructionModal] = useState(false);
   const [openResultModal, setOpenResultModal] = useState(false);
 
   useEffect(() => {
     checkHistory();
     toggleInstructionModal();
-    fetchWordScrambleData();
+    fetchFlipstoneGameData();
   }, []);
 
   const checkHistory = () => {
-    const { wordScramble } = store.getState();
+    const { flipstoneGame } = store.getState();
     updateStore({
-      wordScramble: {
-        ...wordScramble,
-        finalScore: getItem('wordScramble') ? getItem('wordScramble').finalScore : 0,
+      flipstoneGame: {
+        ...flipstoneGame,
+        finalScore: getItem('flipstoneGame') ? getItem('flipstoneGame').finalScore : 0,
         gameFinished: false,
-        scorePercentage: getItem('wordScramble') ? getItem('wordScramble').scorePercentage : 0,
+        scorePercentage: getItem('flipstoneGame') ? getItem('flipstoneGame').scorePercentage : 0,
       }
     })
   }
@@ -38,10 +38,10 @@ function WordScramblePage(props) {
   };
 
   const handleFinish = (score) => {
-    const { wordScramble } = store.getState();
+    const { flipstoneGame } = store.getState();
     updateStore({
-      wordScramble: {
-        ...wordScramble,
+      flipstoneGame: {
+        ...flipstoneGame,
         finalScore: score,
         gameFinished: true,
       }
@@ -50,23 +50,24 @@ function WordScramblePage(props) {
   };
 
   const handleRetry = () => {
-    const { wordScramble } = store.getState();
+    const { flipstoneGame } = store.getState();
     updateStore({
-      wordScramble: {
-        ...wordScramble,
+      flipstoneGame: {
+        ...flipstoneGame,
         finalScore: 0,
         gameFinished: false,
+        scorePercentage: 0,
       }
     })
-    fetchWordScrambleData();
+    fetchFlipstoneGameData();
     toggleResultModal();
   };
 
   const getScorePercentage = (percent) => {
-    const { wordScramble } = store.getState();
+    const { flipstoneGame } = store.getState();
     updateStore({
-      wordScramble: {
-        ...wordScramble,
+      flipstoneGame: {
+        ...flipstoneGame,
         scorePercentage: percent,
       }
     })
@@ -81,30 +82,32 @@ function WordScramblePage(props) {
   }
 
   return (
-    <div className="word-scramble-page">
-      {!gameFinished 
-      ? <WordScrambleGame wordsData={gameData.data} onFinish={handleFinish} />
-      : <GameModal
+    <div className="flipstoneGame-page">
+      {!gameFinished
+        ? <MemoryGame roundsData={gameData.data} onFinish={handleFinish} />
+        : openResultModal
+          ? <GameModal
             onButtonClick={toggleResultModal}
             type="withRate"
-            title="Scramble Savannah"
+            title="Flipstone Falls"
             buttonText="Back to map"
             score={finalScore}
             totalQuestions={0}
             totalRounds={gameData.data.length}
             scoringMode="perRound"
-            gameNumber="2"
+            gameNumber="4"
             onRetry={handleRetry}
             getScorePercentage={getScorePercentage}
           />
+          : null
       }
 
       {openInstructionModal && (
         <GameModal 
-          description="Drag the letters into its corresponding position to spell it right. Beat the timer and make your way through the different levels."
+          description="Click the cards to flip and reveal the objects. Match all the pairs by remembering their locations to win!"
           onButtonClick={toggleInstructionModal}
           type="howTo"
-          title="Scramble Savannah"
+          title="Flipstone Falls"
           header=""
         />
       )}
@@ -114,4 +117,4 @@ function WordScramblePage(props) {
   );
 }
 
-export default (connect('wordScramble'))(WordScramblePage);
+export default connect('flipstoneGame')(MemoryGamePage);
