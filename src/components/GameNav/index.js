@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import helpIcon from '../../assets/images/inventa-help.png';
-import homeIcon from '../../assets/images/inventa-home.png';
-import backIcon from '../../assets/images/inventa-back.png';
 import './style.scss';
 
 const GameNav = ({ path, onButtonClick }) => {
@@ -23,15 +20,15 @@ const GameNav = ({ path, onButtonClick }) => {
     <div className='game-nav-links'>
       <Link className="home-link" to={path ? path : '/game-map'}>
       </Link>
-      <a
+      <button
         className="back-link"
         onClick={handleBack}
         disabled={isOnGameMap}s
       >
-      </a>
-      <a className="help-link" onClick={onButtonClick}>
+      </button>
+      <button className="help-link" onClick={onButtonClick}>
 
-      </a>
+      </button>
     </div>
   );
 };

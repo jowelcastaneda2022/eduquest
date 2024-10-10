@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'unistore/react';
 import './style.scss'; 
-import { componentModal as componentModalHelper } from '../../helpers'
+import { componentModal as componentModalHelper } from '../../helpers';
 
 const ComponentModal = ({ componentModal, closeModal, content, showCloseBtn }) => {
   const [fadeType, setFadeType] = useState(null);
@@ -14,23 +14,23 @@ const ComponentModal = ({ componentModal, closeModal, content, showCloseBtn }) =
     }
   }, [componentModal]);
 
-  const handleClose = () => {
+  const closeModalHandler = () => {
     setFadeType('out');
     setTimeout(() => {
-      if(closeModal){
+      if (closeModal) {
         closeModal();
       }
-      componentModalHelper(null)
+      componentModalHelper(null);
     }, 300);
   };
 
   return (
     <>
       {componentModal !== null && (
-        <div className={`modal-overlay fade-${fadeType}`} onClick={handleClose}>
+        <div className={`modal-overlay fade-${fadeType}`} onClick={closeModalHandler}>
           <div className={`modal-content fade-${fadeType}`} onClick={(e) => e.stopPropagation()}>
-            {showCloseBtn && <button className="modal-close-btn" onClick={handleClose}></button>}
-            {content}
+            {showCloseBtn && <button className="modal-close-btn" onClick={closeModalHandler}></button>}
+            {content(closeModalHandler)}
           </div>
         </div>
       )}

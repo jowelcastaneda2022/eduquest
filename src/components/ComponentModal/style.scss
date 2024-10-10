@@ -12,6 +12,9 @@
   z-index: 9;
   top: 0;
   left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
 
   .modal-content {
     position: relative;
@@ -24,6 +27,9 @@
     max-width: 750px;
     border-radius: 30px;
     height: auto !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
   }
 
   .modal-close-btn {

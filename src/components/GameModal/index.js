@@ -44,7 +44,7 @@ function GameModal({
       resultMessage = "You’ve found the first key!";
     } else {
       resultTitle = "Great effort";
-      resultMessage = "Try again, you can do it! Give it another shot and keep going!";
+      resultMessage = "Try again, you can do it! <br/> Give it another shot and keep going!";
     }
   }
 
@@ -63,7 +63,12 @@ function GameModal({
               : (<p>Choose Modal Type Please.</p>)
           }
         <h2>{header ? header : resultTitle ? resultTitle : 'How to play'}</h2>
-        <p>{resultMessage ? resultMessage : description ? description : "Try picking any games. Each games have description on how to play. Try it and have fun!"}</p>
+        <p dangerouslySetInnerHTML={{ __html: resultMessage 
+          ? resultMessage 
+          : description 
+            ? description 
+            : "Try picking any games. Each games have description on how to play. Try it and have fun!" 
+        }} />
         <div className="btn-wrapper">
             {type === 'howTo' 
               ? <button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>

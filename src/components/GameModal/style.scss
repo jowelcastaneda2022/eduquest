@@ -46,6 +46,7 @@
             margin: 0;
             color: var(--accent-yellow);
             margin-bottom: 15px;
+            white-space: nowrap;
         }
     }
 
@@ -102,7 +103,6 @@
       .btn-style-tryAgain {
         background: var(--accent-yellow);
         color: #000;
-        border: 2px solid #000;
       }
     }
   }

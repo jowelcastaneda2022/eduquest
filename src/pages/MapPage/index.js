@@ -49,15 +49,14 @@ function MapPage(props) {
 
   useEffect(() => {
     const allRatesAbove89 = challenges.every((challenge) => challenge.rate > 89);
-    console.error(allRatesAbove89)
-    if(allRatesAbove89){
+    if (allRatesAbove89) {
       showAllKeysModal()
     }
   }, []);
 
   const showAllKeysModal = () => {
     componentModal({
-      content: (
+      content: (closeModalHandler) => (
         <div className="key-modal">
           <div className="header">
             <img src={key} alt="key" />
@@ -68,7 +67,10 @@ function MapPage(props) {
           <div className="body">
             <h2>You did it!</h2>
             <p>You've found all four keys</p>
-            <button className="btn-style" onClick={() => componentModal(null)}>Back to home</button>
+            <button className="btn-style"
+              onClick={() => closeModalHandler() }>
+              Back to home
+            </button>
           </div>
         </div>
       )
