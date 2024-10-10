@@ -1,4 +1,5 @@
-/* GuessItSpellIt.css */
+@import '../../style/index.scss';
+
 .game-container {
     z-index: 1;
     display: flex;
@@ -44,10 +45,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--accent-lightbrown);
+    color: $accent-lightbrown;
     font-size: 1.5rem;
-    background-color: var(--primary-brown);
-    border: 3px solid var(--primary-yellow);
+    background-color: $primary-brown;
+    border: 3px solid $primary-yellow;
     width: 10rem;
     height: 4rem;
     font-weight: 600;
@@ -84,7 +85,7 @@
   .letter {
     font-size: 55px;
     margin: 0 10px;
-    border: 2px solid var(--accent-lightblue);
+    border: 2px solid $accent-lightblue;
     border-radius: 10px;
     width: 60px;
     height: 70px;
@@ -106,9 +107,9 @@
   .letter-button {
     margin: 5px;
     padding: 10px 15px;
-    border: 2px solid var(--accent-lightblue);
+    border: 2px solid $accent-lightblue;
     border-radius: 10px;
-    background-color: var(--accent-lightblue);
+    background-color: $accent-lightblue;
     cursor: pointer;
     font-size: 62px;
     width: 80px;
@@ -116,17 +117,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary-brown);
+    color: $primary-brown;
     font-family: inherit;
   }
   
   .letter-button:hover {
-    // background-color: var(--accent-lightbrown);
+    // background-color: $accent-lightbrown;
     opacity: .9;
   }
 
   .letter-button[disabled] {
-    background-color: var(--accent-lightblue);
+    background-color: $accent-lightblue;
     opacity: .5;
     color:#f1f1f1;
   }

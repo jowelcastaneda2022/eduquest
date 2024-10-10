@@ -110,7 +110,7 @@ function MapPage(props) {
 
       {openModal && (
         <GameModal
-          description=""
+          description="Try picking any games. Each games have description on how to play. Try it and have fun!"
           onButtonClick={showModal}
           type="howTo"
         />

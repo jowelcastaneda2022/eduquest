@@ -1,14 +1,9 @@
-:root {
-  --primary-blue: #01528D;
-  --accent-yellow: #f9cc0d;
-  --accent-blue: #30c7fc;
-  --secondary-blue: #00355b;
-  --primary-brown: #402500;
-  --primary-brown-rgb: 64, 37, 0;
-  --accent-lightbrown: #d7c2ae;
-  --primary-yellow: #f8cf1a;
-  --accent-lightblue: #1fdadd;
-}
+
+$accent-yellow: #f9cc0d;
+$primary-brown: #402500;
+$accent-lightbrown: #d7c2ae;
+$primary-yellow: #f8cf1a;
+$accent-lightblue: #1fdadd;
 
 body {
   margin: 0;
@@ -19,13 +14,13 @@ body {
 
 .btn-wrapper {
   font-size: 30px;
-  color: var(--primary-brown);
+  color: $primary-brown;
   z-index: 1;
   cursor: pointer;
 
   a {
     font-weight: 700;
-    color: var(--primary-brown);
+    color: $primary-brown;
     border-radius: 10px;
     padding: 15px 50px;
     text-decoration: none;
@@ -35,7 +30,7 @@ body {
 
   button {
     font-weight: 700;
-    color: var(--primary-brown);
+    color: $primary-brown;
     border-radius: 10px;
     padding: 15px 60px;
     font-size: 30px;

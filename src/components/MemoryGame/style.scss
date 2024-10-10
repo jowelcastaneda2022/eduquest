@@ -1,3 +1,5 @@
+@import '../../style/index.scss';
+
 .memory-card {
   position: relative;
   cursor: pointer;
@@ -19,7 +21,7 @@
 }
 
 .memory-card .front.matched {
-  background-color: var(--primary-yellow);
+  background-color: $primary-yellow;
 }
 
 .flipped .front {
@@ -28,7 +30,7 @@
 }
 
 .memory-card .back {
-  background-color: var(--primary-brown);
+  background-color: $primary-brown;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,10 +66,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--accent-lightbrown);
+      color: $accent-lightbrown;
       font-size: 1.5rem;
-      background-color: var(--primary-brown);
-      border: 3px solid var(--primary-yellow);
+      background-color: $primary-brown;
+      border: 3px solid $primary-yellow;
       width: 10rem;
       height: 60px;
       font-weight: 600;

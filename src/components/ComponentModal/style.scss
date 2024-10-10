@@ -1,3 +1,5 @@
+@import '../../style/index.scss';
+
 .modal-overlay {
   min-height: 100vh;
   overflow: hidden;
@@ -22,7 +24,7 @@
     padding: 30px 40px 50px;
     color: #fff;
     text-align: center;
-    background: var(--primary-brown);
+    background: $primary-brown;
     width: 50%;
     max-width: 750px;
     border-radius: 30px;
@@ -37,7 +39,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-    background: var(--accent-lightbrown);
+    background: $accent-lightbrown;
     border: none;
   
     &:before,

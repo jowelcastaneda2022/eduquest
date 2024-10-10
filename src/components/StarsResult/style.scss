@@ -1,3 +1,5 @@
+@import '../../style/index.scss';
+
 .star-key-box {
     display: flex;
     justify-content: center;
@@ -18,7 +20,7 @@
         z-index: 1;
         position: relative;
         z-index: 1;
-        background: var(--accent-yellow);
+        background: $accent-yellow;
 
         .key {
             width: 100%;
@@ -29,7 +31,7 @@
         }
         .number {
           font-size: 38px;
-          color: var(--primary-brown);
+          color: $primary-brown;
         }
     }
 
@@ -43,7 +45,7 @@
         position: relative;
 
         svg {
-            color: var(--accent-yellow);
+            color: $accent-yellow;
             font-size: 36px;
         }
     }

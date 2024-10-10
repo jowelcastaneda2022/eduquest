@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'unistore/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ComponentModal } from './components';
-import { HomePage, WelcomePage, MapPage, MathPage, WordScramblePage, GuessItSpellIt, HowToPage, MemoryGamePage } from './pages';
+import { HomePage, WelcomePage, MapPage, MathPage, WordScramblePage, GuessItSpellIt, MemoryGamePage } from './pages';
 
 
 function App(props) {
@@ -27,7 +27,6 @@ function App(props) {
           <Route path="/math-mountain" element={<MathPage />} />
           <Route path="/scramble-savannah" element={<WordScramblePage />} />
           <Route path="/spellbound-sands" element={<GuessItSpellIt />} />
-          <Route path="/how-to-play" element={<HowToPage />} />
           <Route path="/flipstone-falls" element={<MemoryGamePage />} />
         </Routes>
 

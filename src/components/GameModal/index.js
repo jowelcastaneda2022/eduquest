@@ -67,7 +67,7 @@ function GameModal({
           ? resultMessage 
           : description 
             ? description 
-            : "Try picking any games. Each games have description on how to play. Try it and have fun!" 
+            : "" 
         }} />
         <div className="btn-wrapper">
             {type === 'howTo' 
@@ -79,7 +79,7 @@ function GameModal({
                       <button className="btn-style-tryAgain" onClick={onRetry}>Try Again</button>
                     )}
                   </div>
-                : <p>empty</p>
+                : null
             }
         </div>
       </div>

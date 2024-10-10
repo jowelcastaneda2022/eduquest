@@ -1,108 +1,121 @@
+@import '../../style/index.scss';
+
 .howto-modal {
-    min-height: 100vh;
-    overflow: hidden;
+  min-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  background-color: rgba(116, 81, 45, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: 0;
+  left: 0;
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 30px 40px 50px;
+    color: #fff;
+    text-align: center;
+    background: $primary-brown;
+    width: 50%;
+    max-width: 750px;
+    border-radius: 30px;
+    height: auto !important;
+  }
+
+  .with-rate-wrapper {
+    padding: 0 40px;
+    padding-top: 15px;
+    width: fit-content;
+    margin: auto;
+    border-radius: 30px;
+    margin-top: -65px;
+    background: $primary-brown;
+    margin-bottom: 80px;
     position: absolute;
-    background-color: rgba(116, 81, 45, .5);
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+
+    p {
+      font-size: 42px;
+      padding: 0;
+      margin: 0;
+      color: $accent-yellow;
+      margin-bottom: 15px;
+      white-space: nowrap;
+    }
+  }
+
+  .img-wrapper {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border: 20px solid $primary-brown;
+    background: $primary-brown;
+    border-radius: 100%;
+    margin-bottom: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -70px;
+
+    .owl {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  h2 {
+    font-size: 72px;
+    font-weight: 400;
+    color: $accent-yellow;
+    margin-bottom: 0;
+    margin-top: 60px;
+  }
+
+  p {
+    font-size: 28px;
+    line-height: 1.4em;
+    color: $accent-lightbrown;
+    margin: 15px 0;
+  }
+
+  .btn-wrapper,
+  .btn-wrapper > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9;
-    top: 0;
-    left: 0;
-    
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 30px 40px 50px;
-      color: #fff;
-      text-align: center;
-      background: var(--primary-brown);
-      width: 50%;
-      max-width: 750px;
-      border-radius: 30px;
-      height: auto !important;
-    }
-    
-    .with-rate-wrapper {
-        padding: 0 40px;
-        padding-top: 15px;
-        width: fit-content;
-        margin: auto;
-        border-radius: 30px;
-        margin-top: -65px;
-        background: var(--primary-brown);
-        margin-bottom: 80px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -20px;
+    margin: auto;
+    gap: 20px;
+    padding-top: 10px;
 
-        p {
-            font-size: 42px;
-            padding: 0;
-            margin: 0;
-            color: var(--accent-yellow);
-            margin-bottom: 15px;
-            white-space: nowrap;
-        }
-    }
+    button {
+      display: block;
+      background: $accent-lightbrown;
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s ease;
 
-    .img-wrapper {
-      width: 130px;
-      height: 130px;
-      margin: auto;
-      border: 20px solid var(--primary-brown);
-      background: var(--primary-brown);
-      border-radius: 100%;
-      margin-bottom: 80px;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -70px;
-  
-      .owl {
-        width: 100%;
-        object-fit: contain;
+      &:hover {
+        background: darken($accent-lightbrown, 10%);
       }
     }
-  
-    h2 {
-      font-size: 72px;
-      font-weight: 400;
-      color: var(--accent-yellow);
-      margin-bottom: 0;
-      margin-top: 60px;
-    }
-  
-    p {
-      font-size: 28px;
-      line-height: 1.4em;
-      color: var(--accent-lightbrown);
-      margin: 15px 0;
-    }
-  
-    .btn-wrapper,  .btn-wrapper > div{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      gap: 20px;
-      padding-top: 10px;
 
-      button {
-        display: block;
-        background: var(--accent-lightbrown);
-        cursor: pointer;
-        font-family: inherit;
-        border: none;
-        outline: none;
-      }
-      .btn-style-tryAgain {
-        background: var(--accent-yellow);
-        color: #000;
+    .btn-style-tryAgain {
+      background: $accent-yellow;
+      color: #000;
+
+      &:hover {
+        background: darken($accent-yellow, 10%);
       }
     }
   }
+}

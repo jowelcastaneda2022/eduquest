@@ -1,3 +1,5 @@
+@import '../../style/index.scss';
+
 .pt-md {
   padding-top: 20px;
 }
@@ -32,14 +34,14 @@
       margin: 0 auto;
       line-height: 1.2em;
       font-size: 26px;
-      color: var(--primary-brown);
+      color: $primary-brown;
     }
 
     .btn-wrapper {
       margin-top: 60px;
 
       a {
-        background: var(--accent-yellow);
+        background: $accent-yellow;
         z-index: 1;
       }
     }

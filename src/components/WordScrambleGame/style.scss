@@ -24,23 +24,22 @@
     font-size: 32px;
     box-sizing: border-box;
     background: #fbfcfd;
-    border: 1px solid #9abaff;
+    border: 2px solid transparent;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 10px;
-    -webkit-user-select: none;
-    user-select: none;
     color: black;
+    @include no-text-highlight;
 
     &:hover {
-      border-color: var(--primary-yellow);
+      border-color: $primary-yellow;
       transform: scale(1.05);
     }
     
     &:active {
-      border-color: var(--primary-yellow);
+      border-color: $primary-yellow;
       transform: scale(0.95) rotateZ(1.7deg);
     }
   }
@@ -62,18 +61,19 @@
     z-index: 1;
     
     .img-content {
-      background: rgba(116, 81, 45, .9);
+      background: rgba(116, 81, 45, .8);
       box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.06);
       border-radius: 20px;
       backdrop-filter: blur(20px);
-      padding: 1rem;
+      padding: 30px;
       pointer-events: none;
       img{
         width: 100%;
         max-width: 300px;
         border-radius: 16px;
         pointer-events: none;
-        user-select: none;
+        vertical-align: middle;
+        @include no-text-highlight
       }
     }
   
@@ -88,7 +88,7 @@
       top: 3%;
       left: 3%;
       z-index: -1;
-      background: var(--primary-yellow);
+      background: $primary-yellow;
       transform: translate(-45%, -45%);
     }
   
@@ -97,7 +97,7 @@
       right: 0;
       z-index: -1;
       transform: translate(45%, 45%);
-      background: var(--primary-brown);
+      background: $primary-brown;
     }
   }
 
@@ -112,7 +112,7 @@
     margin: 20px;
     @include no-text-highlight;
     font-family: inherit;
-    color: var(--accent-lightbrown);
+    color: $accent-lightbrown;
     border: none;
 
     &:disabled{
@@ -155,7 +155,7 @@
       display: block;
       position: relative;
       border-radius: 10px;
-      background: var(--primary-brown);
+      background: $primary-brown;
       padding: 20px 40px;
       font-weight: 600;
       font-size: .9rem;
@@ -164,19 +164,7 @@
       transform: translateY(-4px);
       transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
       @include no-text-highlight;
-      color: var(--accent-lightbrown);
+      color: $accent-lightbrown;
     }
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  50% {
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
   }
 }

@@ -1,3 +1,5 @@
+@import '../../style/index.scss';
+
 .big-loader{
   width: 100%;
   min-height: 100vh;
@@ -93,7 +95,7 @@
   
     .box>div:nth-child(4) {
       // --background: #DBE3F4;
-      --background: var(--accent-lightbrown);
+      --background: $accent-lightbrown;
       --top: 0;
       --left: 0;
       --translateZ: calc(var(--size) * 3 * -1);
@@ -102,7 +104,7 @@
 
   .text{
     margin-top: 100px;
-    color: var(--primary-brown);
+    color: $primary-brown;
   }
 }
 
