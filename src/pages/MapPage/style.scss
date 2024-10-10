@@ -214,3 +214,19 @@
     }
   }
 }
+
+.key-modal {
+  text-align: center;
+  .header{
+    display: flex;
+
+    img{
+      max-width: 60px;
+      margin-right: 10px;
+
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}

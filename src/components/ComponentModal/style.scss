@@ -1,0 +1,87 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+  z-index: 20;
+
+  .modal-content {
+    background: transparent;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; 
+  }
+
+  .modal-close-btn {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background-color: black;
+      transform-origin: center;
+      transition: background-color 0.3s ease;
+    }
+  
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  
+    &:hover:before,
+    &:hover:after {
+      background-color: #222;
+    }
+  }
+  
+
+  /* Fade animations */
+  &.fade-in {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s;
+    
+    .modal-content {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease-in-out, visibility 0s;
+    }
+  }
+
+  &.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+    
+    .modal-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+    }
+  }
+}

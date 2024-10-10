@@ -5,7 +5,7 @@ import './style.scss'
 const PageHeader = ({ text, path }) => {
   return (
     <div className="page-header">
-      <Link className="back-link" to={path ? path : '/'}>
+      <Link className="back-link" to={path ? path : '/game-map'}>
         <span className="circle" aria-hidden="true">
           <span className="icon arrow"></span>
         </span>

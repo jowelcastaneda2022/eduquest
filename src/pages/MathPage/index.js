@@ -18,23 +18,20 @@ function MathPage({ math }) {
   }, []);
 
   const checkHistory = () => {
-    const { finalScore, scorePercentage } = getItem('math')
     updateStore({
       math: {
         ...math,
-        finalScore: finalScore || 0,
+        finalScore: getItem('math') ? getItem('math').finalScore : 0,
         gameFinished: false,
-        scorePercentage: scorePercentage || 0,
+        scorePercentage: getItem('math') ? getItem('math').scorePercentage : 0,
       }
     })
   }
 
-  // Function to toggle the instruction modal
   const toggleInstructionModal = () => {
     setOpenInstructionModal(!openInstructionModal);
   };
 
-  // Function to toggle the result modal
   const toggleResultModal = () => {
     setOpenResultModal(!openResultModal);
   };
@@ -81,8 +78,6 @@ function MathPage({ math }) {
   if (!gameData.data) {
     return <div>Failed to load data. Please try again later.</div>;
   }
-
-  console.error('math', math)
 
   return (
     <div className="math-page">

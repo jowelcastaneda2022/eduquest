@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { GameNav, GameModal } from '../../components';
 import welcomeTitle from '../../assets/images/welcome-title.png';
 import key from '../../assets/images/Inventa-island-key.png';
-import { getItem } from '../../helpers';
 // import key from '../../assets/images/key.png';
+import { getItem, componentModal } from '../../helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
@@ -15,11 +15,11 @@ function MapPage(props) {
   const [openModal, setOpenModal] = useState(false);
 
   const getScorePercentage = (name) => {
-    return props[name].scorePercentage 
-    ? props[name].scorePercentage 
-    : getItem(name) 
-      ? getItem(name).scorePercentage 
-      : props[name].scorePercentage 
+    return props[name].scorePercentage
+      ? props[name].scorePercentage
+      : getItem(name)
+        ? getItem(name).scorePercentage
+        : props[name].scorePercentage
   }
 
   const challenges = [
@@ -35,16 +35,46 @@ function MapPage(props) {
     },
     {
       text: "Spellbound Sands",
-      path: "/spellbound-sands"
+      path: "/spellbound-sands",
+      rate: 0
     },
     {
       text: "Flipstone Falls",
-      path: "/flipstone-falls"
+      path: "/flipstone-falls",
+      rate: 0
     }
   ];
 
   const showModal = () => {
     setOpenModal(!openModal)
+  }
+
+  useEffect(() => {
+    const allRatesAbove30 = challenges.every((challenge) => challenge.rate > 30);
+    console.error(allRatesAbove30)
+    if(allRatesAbove30){
+      showAllKeysModal()
+    }
+  }, []);
+
+  const showAllKeysModal = () => {
+    componentModal({
+      content: (
+        <div className="key-modal">
+          <div className="header">
+            <img src={key} alt="key" />
+            <img src={key} alt="key" />
+            <img src={key} alt="key" />
+            <img src={key} alt="key" />
+          </div>
+          <div className="body">
+            <h1>You did it!</h1>
+            <p>You've found all four keys</p>
+            <button onClick={() => componentModal(null)}>Back to home</button>
+          </div>
+        </div>
+      )
+    })
   }
 
   return (
@@ -70,9 +100,6 @@ function MapPage(props) {
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 1 ? 'solidStar' : 'regularStar'} size="xl" />
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 30 ? 'solidStar' : 'regularStar'} size="xl" />
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 90 ? 'solidStar' : 'regularStar'} size="xl" />
-                    {/* <FontAwesomeIcon icon={challenge.rate > 1 ? solidStar : regularStar} size="xl" />
-                    <FontAwesomeIcon icon={challenge.rate > 30 ? solidStar : regularStar} size="xl" />
-                    <FontAwesomeIcon icon={challenge.rate > 90 ? solidStar : regularStar} size="xl" /> */}
                   </div>
                 </div>
               </Link>
@@ -82,7 +109,7 @@ function MapPage(props) {
       </div>
 
       {openModal && (
-        <GameModal 
+        <GameModal
           description=""
           onButtonClick={showModal}
           type="howTo"

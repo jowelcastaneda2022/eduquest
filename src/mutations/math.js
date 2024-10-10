@@ -48,8 +48,6 @@ export function fetchMathData() {
         }
       ]);
 
-      console.error('roundsData', roundsData)
-
       updateStore({
         math: {
           ...math,
