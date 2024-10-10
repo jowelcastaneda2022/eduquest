@@ -1,26 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'unistore/react';
 import { GameNav, GameModal } from '../../components';
 import welcomeTitle from '../../assets/images/welcome-title.png';
 import key from '../../assets/images/Inventa-island-key.png';
+import { getItem } from '../../helpers';
+// import key from '../../assets/images/key.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-import { connect } from 'unistore/react';
 import './style.scss';
 
 function MapPage(props) {
   const [openModal, setOpenModal] = useState(false);
+
+  const getScorePercentage = (name) => {
+    return props[name].scorePercentage 
+    ? props[name].scorePercentage 
+    : getItem(name) 
+      ? getItem(name).scorePercentage 
+      : props[name].scorePercentage 
+  }
+
   const challenges = [
     {
       text: "Math Mountain",
       path: "/math-mountain",
-      rate: props.math.scorePercentage
+      rate: getScorePercentage('math')
     },
     {
       text: "Scramble Savannah",
       path: "/scramble-savannah",
-      rate: props.wordScramble.scorePercentage
+      rate: getScorePercentage('wordScramble')
     },
     {
       text: "Spellbound Sands",
@@ -56,9 +67,12 @@ function MapPage(props) {
                     }
                   </div>
                   <div className="stars">
-                    <FontAwesomeIcon icon={solidStar} className={challenge.rate > 0 ? 'solidStar' : 'regularStar'} size="xl" />
+                    <FontAwesomeIcon icon={solidStar} className={challenge.rate > 1 ? 'solidStar' : 'regularStar'} size="xl" />
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 30 ? 'solidStar' : 'regularStar'} size="xl" />
                     <FontAwesomeIcon icon={solidStar} className={challenge.rate > 90 ? 'solidStar' : 'regularStar'} size="xl" />
+                    {/* <FontAwesomeIcon icon={challenge.rate > 1 ? solidStar : regularStar} size="xl" />
+                    <FontAwesomeIcon icon={challenge.rate > 30 ? solidStar : regularStar} size="xl" />
+                    <FontAwesomeIcon icon={challenge.rate > 90 ? solidStar : regularStar} size="xl" /> */}
                   </div>
                 </div>
               </Link>
@@ -68,10 +82,10 @@ function MapPage(props) {
       </div>
 
       {openModal && (
-        <GameModal description={""}
+        <GameModal 
+          description=""
           onButtonClick={showModal}
           type="howTo"
-
         />
       )}
 

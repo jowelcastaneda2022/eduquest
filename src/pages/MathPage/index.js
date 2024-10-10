@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'unistore/react';
 import { PageLoader, MathGame, GameNav, GameModal } from '../../components';
 import { fetchMathData } from '../../mutations';
-import './style.scss'
+import { getItem } from '../../helpers';
 import { store, updateStore } from '../../unistore'
-import { connect } from 'unistore/react';
+import './style.scss'
 
 function MathPage({ math }) {
   const { gameData, gameFinished, finalScore } = math;
@@ -11,15 +12,22 @@ function MathPage({ math }) {
   const [openResultModal, setOpenResultModal] = useState(false);
 
   useEffect(() => {
-    updateStore({
-      math: {
-        ...math,
-        gameFinished: false,
-      }
-    })
+    checkHistory();
     toggleInstructionModal();
     fetchMathData();
   }, []);
+
+  const checkHistory = () => {
+    const { finalScore, scorePercentage } = getItem('math')
+    updateStore({
+      math: {
+        ...math,
+        finalScore: finalScore || 0,
+        gameFinished: false,
+        scorePercentage: scorePercentage || 0,
+      }
+    })
+  }
 
   // Function to toggle the instruction modal
   const toggleInstructionModal = () => {
@@ -73,6 +81,8 @@ function MathPage({ math }) {
   if (!gameData.data) {
     return <div>Failed to load data. Please try again later.</div>;
   }
+
+  console.error('math', math)
 
   return (
     <div className="math-page">

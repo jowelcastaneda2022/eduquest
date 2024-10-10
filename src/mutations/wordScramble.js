@@ -42,7 +42,7 @@ export function fetchWordScrambleData() {
         }
       })
       resolve(true);
-    }, 2000);
+    }, 1000);
   }).catch(() => {
     setTimeout(() => {
       updateStore({
@@ -55,7 +55,7 @@ export function fetchWordScrambleData() {
           }
         }
       })
-    }, 1000);
+    }, 500);
     return false;
   });
 }

@@ -1,27 +1,40 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import helpIcon from '../../assets/images/inventa-help.png';
+import homeIcon from '../../assets/images/inventa-home.png';
+import backIcon from '../../assets/images/inventa-back.png';
 import './style.scss';
 
-const GameNav = ({path, onButtonClick}) => {
-    const navigate = useNavigate();
+const GameNav = ({ path, onButtonClick }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const handleBack = () => {
+  const handleBack = () => {
+    if (location.pathname === '/game-map') {
+      navigate('/game-map');
+    } else {
       navigate(-1);
-    };
-  
-    return (
-      <div className='game-nav-links'>
-        <Link className="home-link" to={path ? path : '/game-map'}>
-            <span className="text">Home</span>
-        </Link>
-        <a className="back-link" onClick={handleBack}>
-            <span className="text">&lt; &nbsp; Back</span>
-        </a>
-        <a className="help-link" onClick={onButtonClick}>
-            <span className="text">Help</span>
-        </a>
-      </div>
-    );
+    }
   };
-  
+
+  const isOnGameMap = location.pathname === '/game-map';
+
+  return (
+    <div className='game-nav-links'>
+      <Link className="home-link" to={path ? path : '/game-map'}>
+        <span className="text">Home</span>
+      </Link>
+      <button
+        className="back-link"
+        onClick={handleBack}
+        disabled={isOnGameMap}s
+      >
+      </button>
+      <button className="help-link" onClick={onButtonClick}>
+        <span className="text">Help</span>
+      </button>
+    </div>
+  );
+};
+
 export default GameNav;

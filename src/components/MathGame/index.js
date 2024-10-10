@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./style.scss"
+import "./style.scss";
 
 const MathGame = ({ roundsData, onFinish }) => {
   const [currentRound, setCurrentRound] = useState(0);
@@ -7,9 +7,17 @@ const MathGame = ({ roundsData, onFinish }) => {
   const [score, setScore] = useState(0);
 
   const handleDrop = (e, index) => {
-    const answer = parseInt(e.dataTransfer.getData('answer'));
+    const answerIndex = parseInt(e.dataTransfer.getData('answer-index'));
     const newSelectedAnswers = [...selectedAnswers];
-    newSelectedAnswers[index] = answer;
+    newSelectedAnswers[index] = roundsData[currentRound].answers[answerIndex];
+
+    const answerElements = document.querySelectorAll('.answer');
+    answerElements.forEach((el, idx) => {
+      if (idx === answerIndex) {
+        el.classList.add('hidden');
+      }
+    });
+
     setSelectedAnswers(newSelectedAnswers);
   };
 
@@ -50,7 +58,7 @@ const MathGame = ({ roundsData, onFinish }) => {
       </div>
       <div className="answers">
         {roundsData[currentRound].answers.map((answer, index) => (
-          <div key={index} className="answer" draggable onDragStart={(e) => e.dataTransfer.setData('answer', answer)}>
+          <div key={index} className="answer" draggable onDragStart={(e) => e.dataTransfer.setData('answer-index', index)}>
             {answer}
           </div>
         ))}

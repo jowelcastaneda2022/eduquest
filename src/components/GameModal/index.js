@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import owl from '../../assets/images/owl-inventa-island.png'
-import './style.scss'
-import { default as StarsResult } from '../StarsResult'
+import owl from '../../assets/images/owl-inventa-island.png';
+import { StarsResult } from '../../components';
+// import owl from '../../assets/images/owl-welcome.png';
+import './style.scss';
 
-function GameModal({ description, link , onButtonClick, buttonText, type, title, header, score, totalQuestions, totalRounds, scoringMode, onRetry, gameNumber, getScorePercentage }) {
+function GameModal({ 
+  description, 
+  link , 
+  onButtonClick, 
+  buttonText, 
+  type, 
+  title, 
+  header, 
+  score, 
+  totalQuestions, 
+  totalRounds, 
+  scoringMode, 
+  onRetry, 
+  gameNumber, 
+  getScorePercentage 
+}) {
   const navigate = useNavigate();
 
   const denominator = scoringMode === 'perQuestion' ? totalQuestions : totalRounds;
-  const percentage = Math.round((score / denominator) * 100);
+  const percentage = Math.max(1, Math.round((score / denominator) * 100));
+
+  useEffect(() => {
+    if(percentage){
+      getScorePercentage(percentage)
+    }
+  }, []);
 
   let resultMessage;
   let resultTitle;
   
   const handleHomeClick = () => {
-    getScorePercentage(percentage)
     navigate('/game-map');
   };
 
@@ -43,7 +64,7 @@ function GameModal({ description, link , onButtonClick, buttonText, type, title,
               : (<p>Choose Modal Type Please.</p>)
           }
         <h1>{header ? header : resultTitle ? resultTitle : 'How to play'}</h1>
-        <p>{resultMessage ? resultMessage : description ? description : "Description Here..."}</p>
+        <p>{resultMessage ? resultMessage : description ? description : "Try picking any games. Each games have description on how to play. Try it and have fun!"}</p>
         <div className="btn-wrapper">
             {type === 'howTo' 
               ? (<button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>) 
