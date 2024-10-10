@@ -103,7 +103,8 @@ function MathPage({ math }) {
       }
 
       {openInstructionModal && (
-        <GameModal description={"Drag and drop the correct answer into the highlighted area. Beat the timer and make your way through the different levels."}
+        <GameModal 
+          description="Drag and drop the correct answer into the highlighted area. Beat the timer and make your way through the different levels."
           onButtonClick={toggleInstructionModal}
           type="howTo"
           title="Math Mountain"

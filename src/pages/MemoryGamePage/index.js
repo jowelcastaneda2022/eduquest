@@ -104,7 +104,7 @@ function MemoryGamePage({ flipstoneGame }) {
 
       {openInstructionModal && (
         <GameModal 
-          description={"Click the cards to flip and reveal the objects. Match all the pairs by remembering their locations to win!"}
+          description="Click the cards to flip and reveal the objects. Match all the pairs by remembering their locations to win!"
           onButtonClick={toggleInstructionModal}
           type="howTo"
           title="Flipstone Falls"

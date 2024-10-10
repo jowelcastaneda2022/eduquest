@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./style.scss";
+import './style.scss';
 
 const MathGame = ({ roundsData, onFinish }) => {
   const [currentRound, setCurrentRound] = useState(0);
@@ -29,16 +29,25 @@ const MathGame = ({ roundsData, onFinish }) => {
       }
     });
     setScore(score + roundScore);
-
+  
     if (currentRound < roundsData.length - 1) {
       setCurrentRound(currentRound + 1);
       setSelectedAnswers(Array(roundsData[currentRound + 1].questions.length).fill(null));
+      
+      const answerElements = document.querySelectorAll('.answer');
+      answerElements.forEach((el) => {
+        el.classList.remove('hidden');
+      });
     } else {
       onFinish(score + roundScore);
     }
   };
+  
 
-  const isRoundComplete = selectedAnswers.every(answer => answer !== null);
+  const isRoundComplete = () => {
+    const answerElements = document.querySelectorAll('.answer');
+    return Array.from(answerElements).every((el) => el.classList.contains('hidden'));
+  };
 
   return (
     <div className="math-game">
@@ -63,11 +72,11 @@ const MathGame = ({ roundsData, onFinish }) => {
           </div>
         ))}
       </div>
-      <button className="pushable-btn" onClick={handleNextRound} disabled={!isRoundComplete}>
+      <button className="pushable-btn" onClick={handleNextRound} disabled={!isRoundComplete()}>
         <span className="shadow"></span>
         <span className="edge"></span>
         <span className="front">
-          {currentRound < roundsData.length - 1 ? 'Next' : 'Check Result'}
+          {currentRound < roundsData.length - 1 ? 'Next' : 'Finish'}
         </span>
       </button>
     </div>

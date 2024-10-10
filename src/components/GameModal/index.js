@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import owl from '../../assets/images/owl-inventa-island.png';
 import { StarsResult } from '../../components';
-// import owl from '../../assets/images/owl-welcome.png';
 import './style.scss';
 
 function GameModal({ 
@@ -67,15 +66,15 @@ function GameModal({
         <p>{resultMessage ? resultMessage : description ? description : "Try picking any games. Each games have description on how to play. Try it and have fun!"}</p>
         <div className="btn-wrapper">
             {type === 'howTo' 
-              ? (<button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>) 
+              ? <button className="btn-style" onClick={onButtonClick}>{buttonText ? buttonText : 'Close'}</button>
               : type === 'withRate' 
-                ? (<div>
+                ? <div>
                     <button className="btn-style" onClick={handleHomeClick}>{buttonText ? buttonText : 'Close'}</button>
                     {percentage <= 88 && (
                       <button className="btn-style-tryAgain" onClick={onRetry}>Try Again</button>
                     )}
-                  </div>) 
-                : (<p>empty</p>)
+                  </div>
+                : <p>empty</p>
             }
         </div>
       </div>

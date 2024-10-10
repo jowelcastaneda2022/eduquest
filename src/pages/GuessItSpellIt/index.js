@@ -175,7 +175,10 @@ function GuessItSpellIt() {
           />
         )}
         {openModal && (
-          <GameModal description={"In Guess It, Spell It, your goal is to identify the object shown in the picture. Below the image, there’s a blank square representing the hidden name of the object. Beneath that, you'll find a set of scrambled letters. Your task is to choose the correct letters from the scrambled ones to spell out the object’s name and complete the challenge. Have fun guessing and spelling!"} onButtonClick={showModal}/>
+          <GameModal 
+            description="In Guess It, Spell It, your goal is to identify the object shown in the picture. Below the image, there’s a blank square representing the hidden name of the object. Beneath that, you'll find a set of scrambled letters. Your task is to choose the correct letters from the scrambled ones to spell out the object’s name and complete the challenge. Have fun guessing and spelling!" 
+            onButtonClick={showModal}
+          />
         )}
 
         <GameNav onButtonClick={showModal}/>

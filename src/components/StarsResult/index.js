@@ -9,7 +9,7 @@ const StarsResult = ({ percentage, gameNumber }) => {
   return (
     <div className="star-key-box">
       <div className="key-wrapper">
-      {percentage > 30
+      {percentage > 89
         ? <img className="key" src={key} alt="key" />
         : <div className="number">{gameNumber}</div>
       }

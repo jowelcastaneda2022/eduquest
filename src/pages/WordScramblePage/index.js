@@ -100,7 +100,8 @@ function WordScramblePage(props) {
       }
 
       {openInstructionModal && (
-        <GameModal description={"Drag the letters into its corresponding position to spell it right. Beat the timer and make your way through the different levels."}
+        <GameModal 
+          description="Drag the letters into its corresponding position to spell it right. Beat the timer and make your way through the different levels."
           onButtonClick={toggleInstructionModal}
           type="howTo"
           title="Scramble Savannah"
